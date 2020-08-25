@@ -1,9 +1,3 @@
-%%% -*-LaTeX-*-
-%%% cardshuffling.tex.orig
-%%% Prettyprinted by texpretty lex version 0.02 [21-May-2001]
-%%% on Fri Jan 31 05:45:56 2020
-%%% for Steve Dunbar (sdunbar@family-desktop)
-
 \documentclass[12pt]{article}
 
 \input{../../../../etc/macros} %\input{../../../../etc/mzlatex_macros}
@@ -25,10 +19,10 @@
 
 \hr
 
-\visual{Study Tip}{../../../../CommonInformation/Lessons/studytip.png}
-\section*{Study Tip}
+% \visual{Study Tip}{../../../../CommonInformation/Lessons/studytip.png}
+% \section*{Study Tip}
 
-\hr
+% \hr
 
 \visual{Rating}{../../../../CommonInformation/Lessons/rating.png}
 \section*{Rating} %one of
@@ -41,11 +35,14 @@ proofs. % Mathematicians Only: prolonged scenes of intense rigor.
 
 \visual{Section Starter Question}{../../../../CommonInformation/Lessons/question_mark.png}
 \section*{Section Starter Question}
+Why shuffle a deck of cards?  What kind of shuffle do you use?  How
+many shuffles are sufficient to achive the purpose of shuffling?
 
 \hr
 
 \visual{Key Concepts}{../../../../CommonInformation/Lessons/keyconcepts.png}
 \section*{Key Concepts}
+%% This section needs extensive rewriting.
 
 \begin{enumerate}
     \item
@@ -167,26 +164,89 @@ proofs. % Mathematicians Only: prolonged scenes of intense rigor.
 \section*{Mathematical Ideas}
 
 \subsection*{General Setting}
+% This section needs extensive revision to give clarity and precision.
+% The explanation of transitions as composition of permuations need
+% more explanation.
 
-Let the set of states be \( S_n \), the set of permutations on \( n \)
-cards. Let \( Q \) be a type of shuffle, that is, some randomizing
-operation on a state that takes the state to another state.  Because of
-the identification of shuffles or operations with permutations
-themselves, \( Q \), the randomizing shuffle, is a probability
-distribution on \( S_n \).  For convenience, set the initial state \( X_0
+An unopened deck of cards has the face-up order (depending on manufacturer,
+but typically in the U.S.), 
+starting with the Ace of Spades:
+\begin{itemize}
+\item Ace, 2, 3, 4, 5, 6, 7, 8, 9, 10, Jack, Queen, King of Spades,
+\item Ace, 2, 3, 4, 5, 6, 7, 8, 9, 10, Jack, Queen, King of Diamonds,
+\item King, Queen, Jack, 10, 9, 8, 7, 6, 5, 4, 3, 2, Ace of Clubs,
+  then
+\item King, Queen, Jack, 10, 9, 8, 7, 6, 5, 4, 3, 2, Ace of Hearts.
+\end{itemize}
+Call this the initial order of the deck.  Knowing this order is
+essential for some sleight of hand tricks performed by a
+magician.  For card players, shuffling the deck to remove this order
+is essential so that cards dealt from the deck come ``at random'',
+that is, in an order uniformly distributed over all possible deck orders.
+The main question here is: Starting from this order, how many shuffles are
+necessary to obtain a ``random'' deck order from the uniform distribution?
+
+In terms of Markov processes, the questions are: What is the state
+space, what is an appropriate transition probability matrix, what is
+the  steady state distribution, hopefully uniform, and how fast does
+the Markov process approach the steady state distribution?
+
+For simplicity and definiteness, let the cards in the initial deck order above be
+numbered \( 1 \) to \( 52 \).  It will also be convenient to study much
+smaller decks of cards, say having \( n \) cards.  The set of states for a Markov process
+modeling the order of the deck is \( S_n \), the set of permutations on \( n \)
+cards.  For convenience, set the initial state \( X_0
 \) to be the identity permutation with probability \( 1 \).  In other
 words, choose the initial distribution to reflect not having done
-anything to the deck yet.  Since going from \( \pi \) to \( \tau \) is
-the same as composing \( \pi \) with the permutation \( \pi^{-1} \circ
-\tau \), the transition probabilities are \( p_{\pi \tau} = \Prob{X_t =
-\tau \given X_{t-1} = \pi} = Q(\pi^{-1} \circ \tau) \).
+anything to the deck yet.
 
-An immediate consequence of this is that the transition matrix for
-unshuffling is the transpose of the transition matrix since \( \hat{p}_{\pi
-\tau} = \hat{R}(\pi^{-1} \circ \tau) = R((\pi^{-1} \circ \tau)^{-1}) = R
-((\tau^{-1} \circ \pi)) = p_{\tau \pi} \).
+Consider some type of shuffle, that is, a re-ordering
+operation on a state that takes the state to another state.  For
+example, the riffle shuffle, also called a dovetail shuffle or leafing
+the cards, is a common type of shuffle which
+interleaves packets of cards.  A perfect riffle shuffle, also called a
+faro shuffle, exactly splits
+the deck in half, then interleaves exactly one card from each half.  A
+perfect rifle shuffle difficult to
+perform, except for practiced magicians.  More commonly, packets of
+adjacent cards from  unevenly split portions interleave, creating a
+new order for the deck which nevertheless preserves some of the
+previous order in each packet.  Thus a particular riffle shuffle is one of a
+whole family of riffle shuffles, chosen  with a probability
+distribution on the family.  This probability distribution then
+induces a transition probability from state to state, and thus a
+Markov process.
+
+Other types of shuffles have colorful names such as the Hindu shuffle,
+pile shuffle, Corgi shuffle, Mongean shuffle, and Weave shuffle.
+Some types of shuffle are a family of possible re-orderings
+with probability distributions different from the riffle
+shuffle, leading to different transition probabilities, and thus
+different Markov processes.  The most well-studied type of shuffle is
+the riffle shuffle and that is the focus here.
+
+Going from card order\( \pi \) to \( \tau \) is
+the same as composing \( \pi \) with the permutation \( \pi^{-1} \circ
+\tau \).  Now identify shuffles as functions on  \( 1 \) to \( n \) to
+\( 1 \) to \( n \),  that is permutations.
+Since a particular riffle shuffle is one of a
+whole family of riffle shuffles, chosen  with a probability
+distribution \( Q \) from the family,
+the transition probabilities are \( p_{\pi \tau} = \Prob{X_t =
+\tau \given X_{t-1} = \pi} = Q(\pi^{-1} \circ \tau) \).  So now the
+goal is to describe the probability distribution \( Q \) and apply it
+to the Markov process.
+
+% An immediate consequence of this is that the transition matrix for
+% unshuffling is the transpose of the transition matrix since \( \hat{p}_{\pi
+% \tau} = \hat{R}(\pi^{-1} \circ \tau) = R((\pi^{-1} \circ \tau)^{-1}) = R
+% ((\tau^{-1} \circ \pi)) = p_{\tau \pi} \).
 
 \subsection*{The Riffle Shuffle}
+% Generally good explanation however
+% The explanation of transitions as composition of permuations need
+% more explanation.
+% The formatting in the example needs improvement.
 
 One realistic model of shuffling a deck cards is the \defn{riffle
 shuffle}.%
@@ -204,8 +264,8 @@ packet in any possible way, such that the cards from each packet, keep
 their own relative order.  This means the cards originally in positions \(
 1, 2, 3, \dots, k \) must still be in the same order after shuffling,
 even if there are other cards in between.  The same goes for cards
-originally in positions \( k+1, k+2, dots, n \).  This requirement is
-quite natural if you think of how a person shuffles two packets of
+originally in positions \( k+1, k+2, \dots, n \).  This requirement is
+quite natural, considering how a person shuffles two packets of
 cards, one in each hand.  The cards in the left hand must still be in
 the same relative order in the shuffled deck, no matter how they
 interleave with the cards in the other packet, because the cards drop in
@@ -286,7 +346,7 @@ no information about the cut or the interleaving.  The density of cuts
 and interleaving is uniform,.
 
 The uniform density on the set of cuts and interleavings now induces in
-a natural way a density on t he set of permutations.  Call this a \emph{riffle
+a natural way a density on the set of permutations.  Call this a \emph{riffle
 shuffle} and denote it by \( R \).  That is, \( R(\pi) \) is the sum of
 probabilities of each cut and interleaving that gives the rearrangement
 of the deck corresponding to \( \pi \).  In short, the chance of any
@@ -295,9 +355,10 @@ of ways of riffling that give that arrangement.
 
 \begin{example}
     Consider the riffle shuffle on a \( 3 \)-card deck as a Markov
-    chain. The probability distribution for \( R \) is \begin{tabular}{ccccccc}
+    chain. The probability distribution for \( R \) is \\
+    \begin{tabular}{ccccccc}
         $\pi$    & $[123]$       & $[213]$       & $[231]$       & $[132]$       & $[312]$       & $[321]$ \\ 
-        $Q(\pi)$ & $\frac{1}{2}$ & $\frac{1}{8}$ & $\frac{1}{8}$ & $\frac{1}{8}$ & $\frac{1}{8}$ & 0       \\ 
+        $Q(\pi)$ & $\frac{1}{2}$ & $\frac{1}{8}$ & $\frac{1}{8}$ & $\frac{1}{8}$ & $\frac{1}{8}$ & 0.      \\ 
     \end{tabular}
 
     Do the computation for a typical element of the transition
@@ -968,6 +1029,11 @@ yaxis("$\| P^t - U \|_{TV}$", Arrow);
 
 \visual{Problems to Work}{../../../../CommonInformation/Lessons/solveproblems.png}
 \section*{Problems to Work for Understanding}
+% Reformat the Problem and Solutions to exsol format.
+\begin{exercise}
+  Show with a specific pair of permutations on 4 cards that the
+  transition probability matrix is not symmetric
+\end{exercise}
 \begin{enumerate}
     \item
     \item
