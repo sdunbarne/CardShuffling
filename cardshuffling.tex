@@ -252,7 +252,7 @@ One realistic model of shuffling a deck cards is the \defn{riffle
 shuffle}.%
 \index{riffle shuffle}
 The riffle shuffle is sometimes called the GSR shuffle since Gilbert and
-Shannon and independently Reeds analyzed it.  First cut the deck
+Shannon and independently Reeds first analyzed it.  First cut the deck
 randomly into two packets, one containing \( k \) cards and the other
 containing \( n-k \) cards.  Choose \( k \), the number of cards cut
 according to the binomial density, meaning that the probability of the
@@ -260,7 +260,7 @@ cut occurring after \( k \) cards is exactly \( \frac{1}{2^n}\binom{n}{k}
 \).
 
 Once the deck is cut into two packets, interleave the cards from each
-packet in any possible way, such that the cards from each packet, keep
+packet in any possible way, such that the cards from each packet keep
 their own relative order.  This means the cards originally in positions \(
 1, 2, 3, \dots, k \) must still be in the same order after shuffling,
 even if there are other cards in between.  The same goes for cards
@@ -335,15 +335,15 @@ completely interleaved, one card from each hand following one card from
 the other hand.  A perfect shuffle is easy to describe but difficult to
 perform, except for practiced magicians.
 
-Choose among such interleavings uniformly with \( k \) spots among \( n \)
-places for the first packets, fixing the spots for the cards of the
+Choose among all possible interleavings uniformly with \( k \) spots among \( n \)
+places for the first packet, fixing the spots for the cards of the
 other packet, giving \( \binom{n}{k} \) possible interleavings.  This
 means the probability of any one interleaving has probability \( 1/\binom
 {n}{k} \) of occurring. Hence the probability of any particular cut,
 followed by any particular interleaving is \( \frac{1}{2^n}\binom{n}{k}
 \cdot 1/\binom{n}{k} = \frac{1}{2^n} \).  Note that this probability has
-no information about the cut or the interleaving.  The density of cuts
-and interleaving is uniform,.
+no information about the cut or the interleaving.  The density on
+possible  cuts and interleaving is uniform,.
 
 The uniform density on the set of cuts and interleavings now induces in
 a natural way a density on the set of permutations.  Call this a \emph{riffle
@@ -351,18 +351,42 @@ shuffle} and denote it by \( R \).  That is, \( R(\pi) \) is the sum of
 probabilities of each cut and interleaving that gives the rearrangement
 of the deck corresponding to \( \pi \).  In short, the chance of any
 arrangement of cards occurring under riffle shuffling is the proportion
-of ways of riffling that give that arrangement.
+of cuts and interleavings that give that arrangement.
 
 \begin{example}
     Consider the riffle shuffle on a \( 3 \)-card deck as a Markov
-    chain. The probability distribution for \( R \) is \\
+    chain. The probability distribution for \( R \) is in
+    Table~\ref{tab:cardshuffling:riffle3}.  To obtain the entries in
+    Table~\ref{tab:cardshuffling:riffle3}, 
+    systematically go through the possible cuts and interleavings.
+    Cutting three cards into the left packet, and none in the right packet, the only
+    possible interleaving trivially leaves the deck unchanged.  With a
+    cut into \( 2 \) cards on the left, \( 1 \) card on the right, one
+    interleaving drops the right packet card on the bottom, the left
+    packet cards as the top \( 2 \), leaving the deck unchanged.  Two
+    other interleavings move the third card, in the right packet to
+    the middle or the top.  The other two cuts are symmetric to the
+    cuts described above, so \( 4 \) of the \( 8 \) cuts and
+    interleavings keep the deck in the original order.  However, one
+    shuffle each moves the formerly bottom card labeled \( 3 \) to the
+    middle or top position, leaving cards \( 1 \) and \( 2 \) in that
+    order in the shuffled deck.   With a riffle shuffle it is never
+    possible to reverse the order of the deck.
+
+    \begin{table}
+      \centering
+      \caption{Probability distribution for a riffle shuffle on a $3$
+        card deck. }
     \begin{tabular}{ccccccc}
         $\pi$    & $[123]$       & $[213]$       & $[231]$       & $[132]$       & $[312]$       & $[321]$ \\ 
         $Q(\pi)$ & $\frac{1}{2}$ & $\frac{1}{8}$ & $\frac{1}{8}$ & $\frac{1}{8}$ & $\frac{1}{8}$ & 0.      \\ 
     \end{tabular}
+      \label{tab:cardshuffling:riffle3}
+    \end{table}
 
-    Do the computation for a typical element of the transition
-    probability matrix, say \( p_{\pi \tau} \) with \( \pi = [213] \)
+    To obtain the entries in Table~\ref{tab:cardshuffling:riffle3} do
+    the computation for a typical element of the transition
+    probability matrix, say \( p_{\pi,\tau} \) with \( \pi = [213] \)
     and \( \tau = [132] \). Then \( \pi^{-1} = [213] \) and \( \pi^{-1}
     \circ \tau = [231] \).  Now \( R([231]) = \frac{1}{8} \), giving \(
     p_{[213] [132]} = \frac{1}{8} \) in the probability transition
@@ -384,7 +408,7 @@ of ways of riffling that give that arrangement.
 
     Although in this case, the \( n=3 \) riffle shuffle, the matrix is
     symmetric, this is in general not true, the riffle shuffle with deck
-    sizes greater than \( 3 \) is always nonsymmetric.
+    sizes greater than \( 3 \) is always nonsymmetric.  See the exercises.
 \end{example}
 
 First note that the Markov chain for riffle shuffling is regular, that
@@ -418,6 +442,7 @@ In fact,
 \] That is, \( 7 \) shuffles the of 3-card deck gets very close to the
 uniform density, which turns out to be the stationary density.
 
+% start here
 \subsection*{Probability of a Permutation Under Riffle Shuffle}
 
 To find the density of \( k \) riffle shuffles \( R^{(k)} \), define a
@@ -1032,14 +1057,11 @@ yaxis("$\| P^t - U \|_{TV}$", Arrow);
 % Reformat the Problem and Solutions to exsol format.
 \begin{exercise}
   Show with a specific pair of permutations on 4 cards that the
-  transition probability matrix is not symmetric
+  transition probability matrix is not symmetric.
 \end{exercise}
-\begin{enumerate}
-    \item
-    \item
-    \item
-    \item
-\end{enumerate}
+\begin{solution}
+  
+\end{solution}
 
 % \link{_soln.xml}{Solutions to Problems}
 
