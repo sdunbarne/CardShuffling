@@ -323,7 +323,7 @@ for( int i=0; i<10; ++i) {
 label("$i\qquad\pi_i$", (2.75, eps * 10));
 \end{asy}
     \caption{A riffle shuffle on a \( 10 \)-card deck cut into a top
-    packet of \( 4 \) cards and bottom packaet of \( 6 \) cards.}%
+    packet of \( 4 \) cards and bottom packet of \( 6 \) cards.}%
     \label{fig:cardshuffling:riffle}
 \end{figure}
 
@@ -445,30 +445,34 @@ uniform density, which turns out to be the stationary density.
 % start here
 \subsection*{Probability of a Permutation Under Riffle Shuffle}
 
-To find the density of \( k \) riffle shuffles \( R^{(k)} \), define a
-\defn{rising sequence}%
+Define a
+\defn{rising sequence}.%
 \index{rising sequence}
-of a permutation is a maximal consecutive increasing subsequence.  In
-more detail, say \( x \) and look after it for the card labeled \( x+1 \).
-If found, repeat the procedure and looking after the \( x+1 \) card for
+of a permutation as a maximal increasing subsequence
+within the permutation, potentially with gaps in position.  In
+more detail applied to shuffled decks of cards, say \( x \) is a
+particular card from the deck.   After the position of \( x \)
+look for the card labeled \( x+1 \).
+If found , repeat the procedure and looking after the \( x+1 \) card for
 the \( x+2 \) card.  Keep going in this manner until it is not possible
-to find the next card.  Now go back to the original card \( x \) and
-look for the \( x-1 \) card and so on.  When done, it is a rising
+to find the next card adjacent.  Now go back to the original card \( x \) and
+look for the \( x-1 \) card immediately prior and so on.  When done,
+the subsequence of the permutation containing \( x \)  is a rising
 sequence.  A little thought shows that a deck breaks down as a disjoint
 union of its rising sequences, since the union of any two consecutively
-increasing subsequence that has that element is a rising subsequence.
+increasing subsequences with that element is a rising subsequence.
 
 \begin{example}
     Suppose that a permutation of a deck is \( 45162378 \).  Start with
     any card, say \( 3 \).  Look for \( 4 \) and do not find it.  Look
-    before the \( 3 \) and find \( 2 \) and before it find \( 1 \).  So
+    before the \( 3 \) and find \( 2 \) and before it, with a gap, find \( 1 \).  So
     one of the rising sequences of this permutation is \( 123 \).  Now
-    start again, this time with say \( 6 \).  Find \( 7 \) and then
-    after it \( 8 \).  Before \( 6 \) find \( 5 \) and then \( 4 \).  So
+    start again, this time with say \( 6 \).  After a gap, find \( 7 \) and then
+    after it \( 8 \).  Before \( 6 \) with a gap find \( 5 \) and then \( 4 \).  So
     another rising sequence is \( 45678 \).  This accounts for all cards
     and the deck has only two rising sequences.  This is immediately
     clear when writing the sequence as \( 45_{1}6_{23}78 \), offsetting
-    the two random sequences.
+    the two subsequences.
 \end{example}
 
 \begin{example}
@@ -491,9 +495,13 @@ increasing subsequence that has that element is a rising subsequence.
 
 In general, a permutation \( \pi \) of \( n \) cards made by a riffle
 shuffle will have exactly \( 2 \) rising sequences (unless it is the
-identity which has exactly \( 1 \)).  Conversely any permutation of \( n
+identity which has exactly \( 1 \) rising sequence).  This is a
+consequence of the definition of a riffle shuffle as a cut and an
+interleaving.   Conversely any permutation of \( n
 \) card with \( 1 \) or \( 2 \) rising sequences can be obtained by a
-physical shuffle. Therefore a mathematical definition of a riffle
+physical shuffle.  The lengths of the rising sequences define the size
+of the cuts, the gaps in a subsequence define the interleavings.
+Therefore a mathematical definition of a riffle
 shuffle can be made as ``a permutation with \( 1 \) or \( 2 \) rising
 sequences.'' Suppose \( c \) cards are cut off the top.  Then there are \(
 \binom{n}{c} \) possible riffle shuffles, (one of which is the identity
@@ -511,12 +519,12 @@ multiple riffle shuffles.  This can be done by considering \( a \)-shuffles.
 A \defn{\( a \)-shuffle} is another probability density on \( S_n \).
 Let \( a \) be any positive integer.  Cut the deck into \( a \) packets
 of nonnegative sizes \( m_1, m_2, \dots, m_a \) with \( m_1 + \dots + m_a
-= n \) but some of the \( n_i \) may be zero.  The probability of this
+= n \) but some of the \( m_i \) may be zero.  The probability of this
 particular packet structure is given by the multinomial density:
 \[
     \frac{1}{a^n} \binom{n}{m_1, m_2, \dots, m_a}.
-\] Interleave the cards from each packet in any way, so long as the
-cards from each packet, so long as the cards from each packet keep the
+  \] Interleave the cards from each packet in any way,
+  so long as the cards from each packet keep the
 relative order among themselves.  With a fixed packet structure,
 consider all interleavings equally likely.  Count the number of such
 interleavings as the number of ways of choosing among \( n \) positions
@@ -568,10 +576,10 @@ all such rearrangements.  Let \( A \) be an \( n \)-digit base-\( a \)
 number. Count the number of \( 0 \)s in \( A \), this will be the size
 of the first packet \( m_1 \) in the \( a \)-shuffle.  Then \( m_2 \) is
 the number of \( 1 \)s in \( A \) and so on up to \( m_a \), the number
-of \( (a-1) \)s.  This cuts the deck into \( a \) packets.  Not take the
+of \( (a-1) \)s.  This cuts the deck into \( a \) packets.  Now take the
 beginning packet of cards of size \( m_1 \).  Envision placing these
 cards on top of all the \( 0 \) digits keeping their order as a rising
-sequence.  DO the same for the next packet of size \( m_2 \), placing
+sequence.  Do the same for the next packet of size \( m_2 \), placing
 them on the \( 1 \)s.  Continue up through the \( (a-1) \)s,.  This
 particular way of rearranging the cards will then be the particualr cut
 and the interleaving corresponding to \( A \).  Note that the number of
@@ -581,8 +589,8 @@ such encodings is \( a^n \).
     Let the deck start in natural order.  Let \( A = 23004103 \) be the
     code for a particular \( 5 \)-shuffle of the \( 8 \)-card deck.  The
     are three \( 0 \)s, one \( 1 \), one \( 2 \), two \( 3 \)s and one \(
-    4 \) Thus \( p_1 = 3 \), \( p_2 = 1 \), \( p_3 =1 \), \( p_4 = 2 \)
-    and \( p_5 = 1 \).  So the cut deck into \( 123|4|5|67|8 \).  We put
+    4 \) Thus \( m_1 = 3 \), \( m_2 = 1 \), \( m_3 =1 \), \( m_4 = 2 \)
+    and \( m_5 = 1 \).  So the cut deck into \( 123|4|5|67|8 \).  We put
     \( 123 \) where the \( 0 \)s are in \( A \), \( 4 \) where the \( 1 \)
     is, \( 5 \) where the \( 2 \) is, \( 67 \) where the \( 3 \)s are,
     and \( 8 \) where the \( 4 \) is.  Then get a shuffled deck of \(
@@ -592,7 +600,7 @@ such encodings is \( a^n \).
 This code gives a bijective correspondence between \( n \)-digit base-\(
 a \) numbers and the set of all ways of cutting and interleaving an \( n
 \)-card deck according to the \( a \)-shuffle.  In fact, if we put the
-uniform denstiy oon the set of \( n \)-digit base-\( a \) numbers, this
+uniform denstiy on the set of \( n \)-digit base-\( a \) numbers, this
 transfers to the correct uniform probability density for cutting and
 interleaving in an \( a \)-shuffle which means the correct density in
 induced on \( S_n \).
@@ -644,6 +652,7 @@ induced on \( S_n \).
     \end{enumerate}
 \end{proof}
 
+% start here
 \subsection*{Rate of convergence to the stationary distribution}
 
 The rate of convergence of the \( X_t \) to the stationary density,
