@@ -35,6 +35,7 @@ proofs. % Mathematicians Only: prolonged scenes of intense rigor.
 
 \visual{Section Starter Question}{../../../../CommonInformation/Lessons/question_mark.png}
 \section*{Section Starter Question}
+
 Why shuffle a deck of cards?  What kind of shuffle do you use?  How
 many shuffles are sufficient to achive the purpose of shuffling?
 
@@ -45,10 +46,35 @@ many shuffles are sufficient to achive the purpose of shuffling?
 %% This section needs extensive rewriting.
 
 \begin{enumerate}
-    \item
+\item
+  Some shuffle types are a family of possible re-orderings with
+  probability distributions different from the riffle shuffle, leading
+  to different transition probabilities, and thus different Markov
+  processes.  The most well-studied type of shuffle is the riffle
+  shuffle and that is the main focus here.
+\item Going from card order\( \pi \) to \( \tau \) is the same as
+  composing \( \pi \) with the permutation \( \pi^{-1} \circ \tau \).
+  Now identify shuffles as functions on \( 1 \) to \( n \) to \( 1 \)
+  to \( n \), that is permutations.  Since a particular riffle shuffle
+  is one of a whole family of riffle shuffles, chosen with a
+  probability distribution \( Q \) from the family, the transition
+  probabilities are
+  \( p_{\pi \tau} = \Prob{X_t = \tau \given X_{t-1} = \pi} =
+  Q(\pi^{-1} \circ \tau) \).
+\item 
         The identification of shuffles or operations with permutations
         themselves, \( Q \), the randomizing shuffle, is a probability
         distribution on \( S_n \).
+     \item
+        A \defn{Top-to-Random Shuffle},%
+        \index{top-to-random-shuffle}
+        takes the top card from a stack of \(
+        n \) cards and inserts it in the gap between the \( (k-1) \)th
+        card and the \( k \)th card in the deck.
+      \item
+        The Top-To-Random-Shuffle demonstrates the cut-off phenomenon for the Total
+    Variation distance of the Markov chain distribution from the uniform
+    distribution as a function of the number of steps.
     \item
         One realistic model of shuffling a deck of cards is the \defn{riffle
         shuffle}.
@@ -61,30 +87,18 @@ many shuffles are sufficient to achive the purpose of shuffling?
     \item
         \( 7 \) shuffles the of 3-card deck gets very close to the
         uniform density, which turns out to be the stationary density.
-    \item
-        Hence the probability of any particular cut, followed by any
-        particular interleaving is \( \frac{1}{2^n} \).
-    \item
+     \item
         The probability of achieving a permutation \( \pi \) when doing
         an \( a \)-shuffle is
         \[
             \frac{1}{a^n} \binom{n + a - r}{n},
         \] where \( r \) is the number of rising sequences in \( \pi \).
     \item
-        \( 7 \) shuffles the of 3-card deck gets very close to the
-        uniform density, which turns out to be the stationary density.
-    \item
         the set of all eigenvalues of \( P \) is exactly \( 1 \), \(
         \frac{1}{2} \), \( \frac{1}{4} \) and \( \frac{1}{2^n} \).  The
         second largest eigenvalue determines the rate of convergence to
         the stationary distribution. For riffle shuffling, this
         eigenvalue is \( \frac{1}{2} \).
-    \item
-        A \defn{Top-to-Random Shuffle},%
-        \index{top-to-random-shuffle}
-        abbreviated TTRS hereafter, takes the top card from a stack of \(
-        n \) cards and inserts it in the gap between the \( (k-1) \)th
-        card and the \( k \)th card in the deck.
     \item
         For a finite, irreducible, aperiodic Markov chain \( Y_t \)
         distributed as \( Q^t \) at time \( t \) and with stationary
@@ -112,6 +126,27 @@ many shuffles are sufficient to achive the purpose of shuffling?
 \section*{Vocabulary}
 \begin{enumerate}
     \item
+        A defn{Top-to-Random Shuffle},%
+        \index{top-to-random-shuffle}
+        takes the top card from a stack of \( n \) cards and inserts it
+        in the gap between the \( (k-1) \)th card and the \( k \)th card
+        in the deck.
+    \item
+        The \defn{total variation distance} of \( \mu \) from \( \nu \)
+        is%
+        \index{total variation distance}
+        \[
+            \| \mu - \nu \|_{TV} = \max_{A \subset \Omega} \abs{ \mu(A)
+            - \nu(A)} = \frac{1}{2} \sum\limits_{x \in \Omega} \abs{ \mu
+            (x) - \nu(x)}.
+        \]
+    \item
+        A \defn{strong stationary time}%
+        for \( X_t \), \( t \ge 0 \) if \( X_{\tau_{\text{top}}+1} \sim
+        \operatorname{unif}
+        (S_n) \), and \( X_{\tau_{\text{top}}+1} \) is independent of \(
+        \tau_{\text{top}} \).
+    \item
         The \defn{riffle shuffle} first cuts the deck randomly into two
         packets, one containing \( k \) cards and the other containing \(
         n-k \) cards.  Choose \( k \), the number of cards cut according
@@ -135,27 +170,6 @@ many shuffles are sufficient to achive the purpose of shuffling?
         each packet keep the relative order among themselves.  With a
         fixed packet structure, consider all interleavings equally
         likely.
-    \item
-        A defn{Top-to-Random Shuffle},%
-        \index{top-to-random-shuffle}
-        takes the top card from a stack of \( n \) cards and inserts it
-        in the gap between the \( (k-1) \)th card and the \( k \)th card
-        in the deck.
-    \item
-        The \defn{total variation distance} of \( \mu \) from \( \nu \)
-        is%
-        \index{total variation distance}
-        \[
-            \| \mu - \nu \|_{TV} = \max_{A \subset \Omega} \abs{ \mu(A)
-            - \nu(A)} = \frac{1}{2} \sum\limits_{x \in \Omega} \abs{ \mu
-            (x) - \nu(x)}.
-        \]
-    \item
-        A \defn{strong stationary time}%
-        for \( X_t \), \( t \ge 0 \) if \( X_{\tau_{\text{top}}+1} \sim
-        \operatorname{unif}
-        (S_n) \), and \( X_{\tau_{\text{top}}+1} \) is independent of \(
-        \tau_{\text{top}} \).
 \end{enumerate}
 
 \hr
@@ -164,9 +178,6 @@ many shuffles are sufficient to achive the purpose of shuffling?
 \section*{Mathematical Ideas}
 
 \subsection*{General Setting}
-% This section needs extensive revision to give clarity and precision.
-% The explanation of transitions as composition of permuations need
-% more explanation.
 
 An unopened deck of cards has the face-up order (depending on manufacturer,
 but typically in the U.S.), 
@@ -197,11 +208,10 @@ smaller decks of cards, say having \( n \) cards.  The set of states for a Marko
 modeling the order of the deck is \( S_n \), the set of permutations on \( n \)
 cards.  For convenience, set the initial state \( X_0
 \) to be the identity permutation with probability \( 1 \).  In other
-words, choose the initial distribution to reflect not having done
-anything to the deck yet.
+words, choose the initial distribution as not shuffling the deck yet.
 
 Consider some type of shuffle, that is, a re-ordering
-operation on a state that takes the state to another state.  For
+operation on a state that takes an order to another order.  For
 example, the riffle shuffle, also called a dovetail shuffle or leafing
 the cards, is a common type of shuffle which
 interleaves packets of cards.  A perfect riffle shuffle, also called a
@@ -217,13 +227,15 @@ distribution on the family.  This probability distribution then
 induces a transition probability from state to state, and thus a
 Markov process.
 
-Other types of shuffles have colorful names such as the Hindu shuffle,
+Other types of shuffles have colorful names such as the Top-to-Random
+shuffle,
+Hindu shuffle,
 pile shuffle, Corgi shuffle, Mongean shuffle, and Weave shuffle.
-Some types of shuffle are a family of possible re-orderings
+Some shuffle types are a family of possible re-orderings
 with probability distributions different from the riffle
 shuffle, leading to different transition probabilities, and thus
 different Markov processes.  The most well-studied type of shuffle is
-the riffle shuffle and that is the focus here.
+the riffle shuffle and that is the main focus here.
 
 Going from card order\( \pi \) to \( \tau \) is
 the same as composing \( \pi \) with the permutation \( \pi^{-1} \circ
@@ -237,16 +249,344 @@ the transition probabilities are \( p_{\pi \tau} = \Prob{X_t =
 goal is to describe the probability distribution \( Q \) and apply it
 to the Markov process.
 
-% An immediate consequence of this is that the transition matrix for
-% unshuffling is the transpose of the transition matrix since \( \hat{p}_{\pi
-% \tau} = \hat{R}(\pi^{-1} \circ \tau) = R((\pi^{-1} \circ \tau)^{-1}) = R
-% ((\tau^{-1} \circ \pi)) = p_{\tau \pi} \).
+
+\subsection*{Top to Random Shuffle}
+A particularly simple shuffle is the
+ defn{Top-to-Random Shuffle},%
+\index{top-to-random-shuffle}
+abbreviated TTRS hereafter.  The TTRS takes the top card from a stack of \( n \)
+cards and inserts it in the gap between the \( (k-1) \)th card and the \(
+k \)th card in the deck.  See Figure~%
+\ref{fig:cardshuffling:cards1}. (Note that \( k = 1 \) is possible, in
+which case the top card returns to the top.  Likewise, \( k = n+1 \) is
+also permitted, in which case the top card moves to the bottom of the
+card stack.)
+
+Consider the order of the cards to be a permutation on an alphabet of \(
+n \) symbols.  Then after \( t \) TTRS shuffles, the order of the deck
+has a probability distribution \( P^t_n = P^t \) on \( S_n \) where the
+subscript \( n \) is omitted for brevity for a fixed or implicit number
+of cards.
+
+The TTRS is naturally a finite Markov chain \( X_t \) for \( t \ge 0 \)
+with \( X_t \in S_n \).  The transition probabilities are
+\[
+    \Prob{X_{t+1} = \sigma' \given X_t = \sigma} =
+    \begin{cases}
+        \frac{1}{n}     & \text{\( \sigma' \) is a TTRS of \( \sigma \)}\\
+        0       & \text{otherwise}
+    \end{cases}
+\] Additionally, it is natural to set \( X_0 = \sigma_0 \), the identity
+permutation.  Then \( X_t \sim P^t \), the distribution on card decks.
+It is routine to check to that \( X_t \) is irreducible.  It is also
+immediate that \( X_t \) is aperiodic since it is possible that the top
+card can recur back on top.  Therefore, this Markov chain must
+converge to a stationary distribution and by the previous Theorem, \( P^t
+\to
+\operatorname{unif}
+(S_n) \).
+
+\begin{example}
+The transition matrix for the TTRS on a deck with three cards is
+\[
+    \bordermatrix{
+        & [123] & [213] & [231] & [132] & [312] & [321] \cr
+        [123]   & \frac{1}{3}   & \frac{1}{3}   & \frac{1}{3}   & 0
+        & 0     & 0 \cr
+        [213]   & \frac{1}{3}   & \frac{1}{3}   & 0     & \frac{1}{3}
+        & 0     & 0 \cr
+        [231]   & 0     & 0     & \frac{1}{3}   & 0     & \frac{1}{3}
+        & \frac{1}{3} \cr
+        [132]   & 0     & 0     & 0     & \frac{1}{3}   & \frac{1}{3}
+        & \frac{1}{3} \cr
+        [312]   & \frac{1}{3}   & 0     & 0     & \frac{1}{3}   & \frac{1}
+        {3}     & 0 \cr
+        [321]   & 0     & \frac{1}{3}   & \frac{1}{3}   & 0     & 0
+        & \frac{1}{3} \cr
+    }
+\]
+
+If the card deck is initially in order \( 1 \) to \( n \) from top to
+bottom, how many of these shuffles does it take for the deck to be
+sufficiently shuffled? It is easy to verify with matrix multiplication
+that numerically, speaking, starting with the identity ordering, the
+density of the permutations after \( 7 \) top-to-random shuffles is the
+first row of \( P^7 \).  In fact,
+\[
+    P^7 =
+    \begin{pmatrix}
+      0.16690 & 0.16690 & 0.16690 & 0.16644 & 0.16644 & 0.16644 \\
+      0.16690 & 0.16690 & 0.16644 & 0.16690 & 0.16644 & 0.16644 \\
+      0.16644 & 0.16644 & 0.16690 & 0.16644 & 0.16690 & 0.16690 \\
+      0.16644 & 0.16644 & 0.16644 & 0.16690 & 0.16690 & 0.16690 \\
+      0.16690 & 0.16644 & 0.16644 & 0.16690 & 0.16690 & 0.16644 \\
+      0.16644 & 0.16690 & 0.16690 & 0.16644 & 0.16644 & 0.16690 \\
+    \end{pmatrix}
+    .
+\] That is, \( 7 \) shuffles of the 3-card deck gets close to the
+uniform density, which turns out to be the stationary denisty. Part of
+this question is to refine what it means for the deck to be sufficiently
+shuffled.
+
+The eigenvalues of \( P \)  are \( 1, \frac{1}{3}, \frac{1}{3}, \frac
+{1}{3}, 0, 0 \).
+
+\end{example}
+
+\begin{figure}
+    \centering
+\begin{asy}
+  size(5inches);
+
+real myfontsize = 12;
+real mylineskip = 1.2*myfontsize;
+pen mypen = fontsize(myfontsize, mylineskip);
+defaultpen(mypen);
+
+real eps = 0.1;
+pair vert = (0, eps);
+
+defaultpen(5);
+path card = (0,0)--(1,0);
+
+label("Stack Position", shift(3*vert)*(1.1,0));
+draw(shift(2*vert)*card); label("$1$", shift(2*vert)*(1.1,0));
+draw(shift(vert)*card); label("$2$", shift(vert)*(1.1,0));
+draw(card); label("$3$",(1.1,0));
+label("$\Huge{\vdots}$", -vert);
+draw(shift(-2vert)*card); label("$k-1$", shift(-2*vert)*(1.1,0));
+draw(shift(-3*vert)*card); label("$k$", shift(-3*vert)*(1.1,0));
+label("$\Huge{\vdots}$", -4*vert);
+draw(shift(-5*vert)*card); label("$n$", shift(-5*vert)*(1.1,0));
+
+draw( arc( (1.15, -eps/4), r = 2.20*eps, angle1=90, angle2=-90),
+      arrow=Arrow(), red+1bp);
+\end{asy}
+    \caption{Schematic drawing of the Top-to-Random-Shuffle.}%
+    \label{fig:cardshuffling:cards1}
+\end{figure}
+
+\begin{lemma}
+    At any time \( t \), if there are \( k \) cards beneath the last card
+    labeled \( n \), then these cards appear in any order with equal
+    probability.
+\end{lemma}
+
+\begin{proof}
+    The proof is by induction on \( t \).  The base case \( t = 0 \) is
+    trivial.  Suppose that the claim is true for some \( t > 0 \).  In
+    the transition to \( t + 1 \), two cases can occur, refer to Figure~%
+    \ref{fig:cardshuffling:cards2} for a schematic diagram. First, the
+    top card is randomly placed above the card labeled \( n \) that is
+    somewhere in the stack.  Then nothing is changed and the proof is
+    complete.  Otherwise, the top card is placed in one of the \( k+1 \)
+    available spaces below the last card labled \( n \) that is somewhere in
+    the stack.  The probability of any particular one of these
+    arrangements is
+    \[
+        \frac{1}{k!} \cdot \frac{1}{k+1} = \frac{1}{(k+1)!}
+    \] where \( \frac{1}{k!} \) comes from the induction hypothesis and
+    the \( \frac{1}{k+1} \) comes from the TTRS\@.  The proof is
+    complete.
+\end{proof}
+
+\begin{figure}
+    \centering
+\begin{asy}
+    size(5inches);
+
+real myfontsize = 12;
+real mylineskip = 1.2*myfontsize;
+pen mypen = fontsize(myfontsize, mylineskip);
+defaultpen(mypen);
+
+real eps = 0.1;
+pair vert = (0, eps);
+
+defaultpen(2);
+path card = (0,0)--(1,0);
+
+picture p = new picture;
+size(p, 2inches);
+
+label(p, "Card Number", shift(3*vert)*(-0.1,0));
+draw(p, shift(2*vert)*card);
+draw(p, shift(vert)*card);
+draw(p, card);
+label(p, "$\Large{\vdots}$", -vert);
+label(p, "$n$", shift(-2*vert)*(-0.1,0));
+draw(p, shift(-2*vert)*card); 
+draw(p, shift(-3*vert)*card); 
+label(p, "$\Large{\vdots}$", -4*vert);
+draw(p, shift(-5*vert)*card);
+
+draw(p, (1.15, -2*eps)--(1.15, -5*eps),
+     arrow=Arrows(),
+     bar= Bars(), black+1bp );
+label(p, "$k$ cards", (1.15, -3.5*eps), align=E );
+draw(p,  arc( (1.15, 0), r = eps, angle1=90, angle2=-90),
+      arrow=Arrow(), red+1bp);
+
+picture q = new picture;
+size(q, 2inches);
+
+label(q, "Card Number", shift(3*vert)*(-0.1,0));
+draw(q, shift(2*vert)*card);
+draw(q, shift(vert)*card);
+draw(q, card);
+label(q, "$\Large{\vdots}$", -vert);
+label(q, "$n$", shift(-2*vert)*(-0.1,0));
+draw(q, shift(-2*vert)*card); 
+draw(q, shift(-3*vert)*card); 
+label(q, "$\Large{\vdots}$", -4*vert);
+draw(q, shift(-5*vert)*card);
+
+draw(q, (1.15, -2*eps)--(1.15, -5*eps),
+     arrow=Arrows(),
+     bar= Bars(), black+1bp );
+label(q, "$k$ cards", (1.15, -3.5*eps), align=E );
+draw(q,  arc( (1.15, -eps), r = 3*eps, angle1=90, angle2=-90),
+      arrow=Arrow(), red+1bp);
+
+add(p.fit(),(0,0), (0,0) );
+add(q.fit(),(0,0), (100,0) );
+\end{asy}
+    \caption{Schematic diagram of the proof of the Lemma}%
+    \label{fig:cardshuffling:cards2}
+\end{figure}
+
+
+\begin{theorem}
+    Let \( \tau_{\text{top}} \) be the first time that card \( n \)
+    reaches the top of the deck.  Then \( P^{\tau_{\text{top}}+1} \) is
+    uniform on \( S_n \).  Furthermore, whatever permutation arises at
+    time \( \tau_{\text{top}}+1 \) is independent of \( \tau_{\text{top}}
+    \).
+\end{theorem}
+
+\begin{proof}
+    Follows easily from the Lemma, since at time \( \tau_{\text{top}} \)
+    the \( n-1 \) cards below card \( n \) will be uniformly distributed
+    over the \( (n-1)! \) possible permutations.  Then at time \( \tau_{\text
+    {top}}+ 1 \) card \( n \) is inserted uniformly at random in the
+    deck.
+\end{proof}
+
+\begin{remark}
+    Waiting for \( \tau_{\text{top}} \) is the same as waiting for
+    completion in the ``coupon collectors problem in reverse''.  More
+    precisely, collecting a coupon here is like putting the card below
+    the card labeled \( n \).  The first card is hard to put under \( n \),
+    in fact it happens with probability \( \frac{1}{n+1} \) but it gets
+    easier as time goes on.  This motivates the assertion that \( \E{\tau_
+    {\text{top}} + 1} = \Theta(n \log n) \) and that \( \Prob{\tau_{\text
+    {top}}+1 \ge n \log n + c n} \le \EulerE^{-c} \) for all \( c \ge 0 \).
+\end{remark}
+
+\begin{definition}
+    If \( \mu \) and \( \nu \) are probability distributions on \(
+    \Omega \), the \defn{total variation distance} of \( \mu \) from \(
+    \nu \) is%
+    \index{total variation distance}
+    \[
+        \| \mu - \nu \|_{TV} = \max_{A \subset \Omega} \abs{ \mu(A) -
+        \nu(A)} = \frac{1}{2} \sum\limits_{x \in \Omega} \abs{ \mu(x) -
+        \nu(x)}.
+    \]
+\end{definition}
+
+\begin{remark}
+    A ``bad event'' is an event that \( \mu \) and \( \nu \) measure \(
+    A \) very differently.
+\end{remark}
+
+\begin{definition}
+    Define \( \tau_{\text{top}} \) as a \defn{strong stationary
+    time}%
+    \index{strong stationary time}
+    for \( X_t \), \( t \ge 0 \) if \( X_{\tau_{\text{top}}+1} \sim
+    \operatorname{unif}
+    (S_n) \), and \( X_{\tau_{\text{top}}+1} \) is independent of \(
+    \tau_{\text{top}} \).
+\end{definition}
+
+\begin{theorem}[Aldous, Diaconis]
+    For a finite, irreducible, aperiodic Markov chain \( Y_t \)
+    distributed as \( Q^t \) at time \( t \) and with stationary
+    distribution \( \pi \), and \( \tau \) is a strong stationary time,
+    then
+    \[
+        \| Q^{\tau} - \pi \|_{TV} \le \Prob(\tau \ge t)
+    \]
+\end{theorem}
+
+\begin{remark}
+    The hypotheses irreducible and aperiodic may not be strictly
+    necessary, but occur here because they are common in theorems about
+    Markov chains.
+\end{remark}
+
+Then immediately, \( \| P^{\tau_{\text{top}}+1} - U \|_{TV} \le \Prob{\tau_
+{\text{top}+1} \le \EulerE^{-c}} \).  This is like the coupon collector
+having \( n \) coupons.
+
+For simplicity in what follows, set \( d_n(t) = \| P^{\tau_{\text{top}}+1}
+- U \|_{TV} \).  Then for \( \epsilon > 0 \),
+\begin{enumerate}
+    \item
+        \( d_{n}(n \log n + n \log \epsilon^{-1} )\le \epsilon \) for \(
+        n \) sufficiently large.
+    \item
+        \( d_{n}(n \log n - n \log (C \epsilon^{-1})) \ge 1-\epsilon \)
+        for \( n \) sufficiently large.
+\end{enumerate}
+
+The justification is to find a ``bad event'' and use it to measure the
+total variation distance.  In fact, let \( A_j \) be the event that the
+bottom \( j \) cards of the deck appear in correct relative order.  Then
+\( U(A_j) = 1/j! \).  while \( P^t(A_j) = \).
+
+This gives a cut-off phenomenon, see Figure~%
+\ref{fig:cardshuffling:cards3}.
+
+\begin{figure}
+    \centering
+\begin{asy}
+    import graph;
+
+size(5inches);
+
+real myfontsize = 12;
+real mylineskip = 1.2*myfontsize;
+pen mypen = fontsize(myfontsize, mylineskip);
+defaultpen(mypen);
+
+real f( real x) {
+  real a = 0.6;
+  real k = 50.0;
+  
+  real term = exp(-k*(x -a));
+  return term/( 1 + term);
+}
+
+draw( graph(f, 0,1));
+xaxis("$t$", Arrow);
+xtick(Label("$n \log n (1 -o(1))$", (0.4,0), 2S), (0.4, 0), S);
+xtick(Label("$n \log n $", (0.6, 0), 2N), (0.6, 0), N);
+xtick(Label("$n \log n (1 +o(1))$", (0.8,0), 2S), (0.8, 0), S);
+yaxis("$\| P^t - U \|_{TV}$", Arrow);
+\end{asy}
+    \caption{Schematic graph of the cut-off phenomenon for the Total
+    Variation distance of the Markov chain distribution from the uniform
+    distribution as a function of the number of steps.}%
+    \label{fig:cardshuffling:cards3}
+\end{figure}
+\begin{remark}
+    Note that \( n \log n + n \log \epsilon^{-1} = n \log n (1 + o(1)) \)
+    and\( n \log n - n \log \epsilon^{-1} = n \log n (1 - o(1)) \)
+\end{remark}
 
 \subsection*{The Riffle Shuffle}
-% Generally good explanation however
-% The explanation of transitions as composition of permuations need
-% more explanation.
-% The formatting in the example needs improvement.
 
 One realistic model of shuffling a deck cards is the \defn{riffle
 shuffle}.%
@@ -335,8 +675,8 @@ completely interleaved, one card from each hand following one card from
 the other hand.  A perfect shuffle is easy to describe but difficult to
 perform, except for practiced magicians.
 
-Choose among all possible interleavings uniformly with \( k \) spots among \( n \)
-places for the first packet, fixing the spots for the cards of the
+Choose among all possible interleavings uniformly with \( k \) locations among \( n \)
+places for the first packet, fixing the locations for the cards of the
 other packet, giving \( \binom{n}{k} \) possible interleavings.  This
 means the probability of any one interleaving has probability \( 1/\binom
 {n}{k} \) of occurring. Hence the probability of any particular cut,
@@ -364,14 +704,14 @@ of cuts and interleavings that give that arrangement.
     cut into \( 2 \) cards on the left, \( 1 \) card on the right, one
     interleaving drops the right packet card on the bottom, the left
     packet cards as the top \( 2 \), leaving the deck unchanged.  Two
-    other interleavings move the third card, in the right packet to
+    other interleavings move the card in the right packet to
     the middle or the top.  The other two cuts are symmetric to the
     cuts described above, so \( 4 \) of the \( 8 \) cuts and
     interleavings keep the deck in the original order.  However, one
     shuffle each moves the formerly bottom card labeled \( 3 \) to the
     middle or top position, leaving cards \( 1 \) and \( 2 \) in that
-    order in the shuffled deck.   With a riffle shuffle it is never
-    possible to reverse the order of the deck.
+    order in the shuffled deck.    A single riffle shuffle cannot
+    reverse the order of the deck.
 
     \begin{table}
       \centering
@@ -442,7 +782,6 @@ In fact,
 \] That is, \( 7 \) shuffles the of 3-card deck gets very close to the
 uniform density, which turns out to be the stationary density.
 
-% start here
 \subsection*{Probability of a Permutation Under Riffle Shuffle}
 
 Define a
@@ -652,37 +991,66 @@ induced on \( S_n \).
     \end{enumerate}
 \end{proof}
 
-% start here
 \subsection*{Rate of convergence to the stationary distribution}
 
-The rate of convergence of the \( X_t \) to the stationary density,
-measured by the total variation distance of soem other metric is
-determined by the eigenvalues of hte transition matrix.  We know that
+Recall the modeling of card shuffling as a Markov chain.  The initial
+state \( X_0 \) is the identity permutation, that is cards in the
+initial deck order numbered \( 1 \) to \(n \), with probability
+\( 1 \).  A particular riffle shuffle, one of a whole family of riffle
+shuffles, is chosen with a probability distribution from the family.
+This probability distribution then induces a transition probability
+from state to state.  Going from card order\( \pi \) to \( \tau \) is
+the same as composing \( \pi \) with the permutation
+\( \pi^{-1} \circ \tau \).  Now identify shuffles as functions on
+\( 1 \) to \( n \) to \( 1 \) to \( n \), that is permutations.  Since
+a particular riffle shuffle is one of a whole family of riffle
+shuffles, chosen with a probability distribution \( Q \) from the
+family, the transition probabilities are
+\( p_{\pi \tau} = \Prob{X_t = \tau \given X_{t-1} = \pi} = Q(\pi^{-1}
+\circ \tau) \).
+
+The rate of convergence of \( X_t \) to the stationary density,
+measured by the total variation distance of some other metric is
+determined by the eigenvalues of the transition matrix.  We know that
 the entries of \( P^k \) are the probabilities of certain permutations
 being acheived usder \( k \) riffle shuffles.  These probabilities are
 of the form
 \[
     \frac{1}{2^nk} \binom{2^k +n - r}{n},
 \] for the probability of a permutation with \( r \) rising sequences
-being achieved after \( k \) riffle shuffles.  Expanding the binomial
+being achieved after \( k \) riffle shuffles.
+
+Expanding the binomial
 expression, explicitly write out
 \[
     \binom{x + n - r}{n} = \sum\limits_{i=0}^n c_{n,r,i} x^i
 \] giving the binomial coefficient as an \( n \)th degree polynomial in \(
-x \) with coefficients as a function of \( n \) and \( r \).  It doesn't
+x \) written in increasing powers with coefficients as a function of \( n \) and \( r \).
+\begin{example}
+  As a simple illustrative example, take $n = 5$ and $r = 2$ so the
+  point is to expand
+  \begin{multline*}
+    \binom{x+5 - 2}{5} = \binom{x+3}{5} =
+    \frac{(x+3)(x+2)(x+1)x(x-1)}{5!} \\
+    =  \frac{x^5 + 5 x^4 + 5 x^3 - 5 x^2 - 6 x}{5!} \\
+    = - \frac{1}{20} x - \frac{1}{24} x^2 - \frac{1}{24} x^2 +
+    \frac{1}{24} x^4   + \frac{1}{120} x^5  
+  \end{multline*}
+\end{example}
+It doesn't
 really matter what the coefficients are, only that we can write the
 binomial coefficient expansion as a polynomial in \( x \).  Substituting
-\( 2^k \) for \( x \), we see tha thte entries of \( P^k \) have the
+\( 2^k \) for \( x \), we see that the entries of \( P^k \) have the
 form
 \[
-    \frac{1}{2^{nk}} \sum\limits_{i=0}^n c_{n,r,i} \left( 2^k \right)^i
-    = \sum\limits_{i=0}^n c_{n,r,n-i} \left( \frac{1}{2^i} \right)^k
+  \sum\limits_{i=0}^n c_{n,r,n-i} \left( \frac{1}{2^i} \right)^k
+  = \frac{1}{2^{nk}} \sum\limits_{i=0}^n c_{n,r,i} \left( 2^k \right)^i
 \] This means that the entries of the \( k \)th power of \( P \) are
-given by fixed linear combinations of hte \( k \)th powers of \( 1 \), \(
+given by fixed linear combinations of the \( k \)th powers of \( 1 \), \(
 \frac{1}{2} \), \( \frac{1}{4} \) and \( \frac{1}{2^n} \).  Then from
 standard facts of linear algebra the set of all eignevalues of \( P \)
 is exactly \( 1 \), \( \frac{1}{2} \), \( \frac{1}{4} \) and \( \frac{1}
-{2^n} \).  The second largets eigenvalue determines the rate of
+{2^n} \).  The second largest eigenvalue determines the rate of
 convergence to the stationary distribution. For riffle shuffling, this
 eigenvalue is \( \frac{1}{2} \).  Once the variation distance gets to
 the cutoff, it decreases by a facotr of approximately \( \frac{1}{2} \)
@@ -710,339 +1078,17 @@ with each shuffle.
     \frac{1}{2}, \frac{1}{4}, \frac{1}{4} \).
 \end{example}
 
-\subsection*{Top to Random Shuffle}
-
-A defn{Top-to-Random Shuffle},%
-\index{top-to-random-shuffle}
-abbreviated TTRS hereafter, takes the top card from a stack of \( n \)
-cards and inserts it in the gap between the \( (k-1) \)th card and the \(
-k \)th card in the deck.  See Figure~%
-\ref{fig:cardshuffling:cards1}. (Note that \( k = 1 \) is possible, in
-which case the top card returns to the top.  Likewise, \( k = n+1 \) is
-also permitted, in which case the top card moves to the bottom of the
-card stack.)
-
-Consider the order of the cards to be a permutation on an alphabet of \(
-n \) symbols.  Then after \( t \) TTRS shuffles, the order of the deck
-has a probability distribution \( P^t_n = P^t \) on \( S_n \) where the
-subscript \( n \) is omitted for brevity for a fixed or implicit number
-of cards.
-
-The TTRS is naturally a finite Markov chain \( X_t \) for \( t \ge 0 \)
-with \( X_t \in S_n \).  The transition probabilities are
-\[
-    \Prob{X_{t+1} = \sigma' \given X_t = \sigma} =
-    \begin{cases}
-        \frac{1}{n}     & \text{\( \sigma' \) is a TTRS of \( \sigma \)}\\
-        0       & \text{otherwise}
-    \end{cases}
-\] Additionally, it is natural to set \( X_0 = \sigma_0 \), the identity
-permutation.  Then \( X_t \sim P^t \), the distribution on card decks.
-It is routine to check to that \( X_t \) is irreducible.  It is also
-immediate that \( X_t \) is aperiodic since it is possible that the top
-card can be place back on top.  Therefore, this Markov chain must
-converge to a stationary distribution and by the previous Theorem, \( P^t
-\to
-\operatorname{unif}
-(S_n) \).
-
-The transition matrix for the TTRS on a deck with three cards is
-\[
-    \bordermatrix{
-        & [123] & [213] & [231] & [132] & [312] & [321] \cr
-        [123]   & \frac{1}{3}   & \frac{1}{3}   & \frac{1}{3}   & 0
-        & 0     & 0 \cr
-        [213]   & \frac{1}{3}   & \frac{1}{3}   & 0     & \frac{1}{3}
-        & 0     & 0 \cr
-        [231]   & 0     & 0     & \frac{1}{3}   & 0     & \frac{1}{3}
-        & \frac{1}{3} \cr
-        [132]   & 0     & 0     & 0     & \frac{1}{3}   & \frac{1}{3}
-        & \frac{1}{3} \cr
-        [312]   & \frac{1}{3}   & 0     & 0     & \frac{1}{3}   & \frac{1}
-        {3}     & 0 \cr
-        [321]   & 0     & \frac{1}{3}   & \frac{1}{3}   & 0     & 0
-        & \frac{1}{3} \cr
-    }
-\]
-
-If the card deck is initially in order \( 1 \) to \( n \) from top to
-bottom, how many of these shuffles does it take for the deck to be
-sufficiently shuffled? It is easy to verify with matrix multiplication
-that numerically, speaking, starting with the identity ordering, the
-density of the permutations after \( 7 \) top-to-random shuffles is the
-first row of \( P^7 \).  In fact,
-\[
-    P^7 =
-    \begin{pmatrix}
-      0.16690 & 0.16690 & 0.16690 & 0.16644 & 0.16644 & 0.16644 \\
-      0.16690 & 0.16690 & 0.16644 & 0.16690 & 0.16644 & 0.16644 \\
-      0.16644 & 0.16644 & 0.16690 & 0.16644 & 0.16690 & 0.16690 \\
-      0.16644 & 0.16644 & 0.16644 & 0.16690 & 0.16690 & 0.16690 \\
-      0.16690 & 0.16644 & 0.16644 & 0.16690 & 0.16690 & 0.16644 \\
-      0.16644 & 0.16690 & 0.16690 & 0.16644 & 0.16644 & 0.16690 \\
-    \end{pmatrix}
-    .
-\] That is, \( 7 \) shuffles of the 3-card deck gets close to the
-uniform density, which turns out to be the stationary denisty. Part of
-this question is to refine what it means for the deck to be sufficiently
-shuffled.
-
-The eigenvalues of this matrix are \( 1, \frac{1}{3}, \frac{1}{3}, \frac
-{1}{3}, 0, 0 \).
-
-\begin{figure}
-    \centering
-\begin{asy}
-  size(5inches);
-
-real myfontsize = 12;
-real mylineskip = 1.2*myfontsize;
-pen mypen = fontsize(myfontsize, mylineskip);
-defaultpen(mypen);
-
-real eps = 0.1;
-pair vert = (0, eps);
-
-defaultpen(5);
-path card = (0,0)--(1,0);
-
-label("Stack Position", shift(3*vert)*(1.1,0));
-draw(shift(2*vert)*card); label("$1$", shift(2*vert)*(1.1,0));
-draw(shift(vert)*card); label("$2$", shift(vert)*(1.1,0));
-draw(card); label("$3$",(1.1,0));
-label("$\Huge{\vdots}$", -vert);
-draw(shift(-2vert)*card); label("$k-1$", shift(-2*vert)*(1.1,0));
-draw(shift(-3*vert)*card); label("$k$", shift(-3*vert)*(1.1,0));
-label("$\Huge{\vdots}$", -4*vert);
-draw(shift(-5*vert)*card); label("$n$", shift(-5*vert)*(1.1,0));
-
-draw( arc( (1.15, -eps/4), r = 2.20*eps, angle1=90, angle2=-90),
-      arrow=Arrow(), red+1bp);
-\end{asy}
-    \caption{Schematic drawing of the Top-to-Random-Shuffle.}%
-    \label{fig:cardshuffling:cards1}
-\end{figure}
-
-\begin{lemma}
-    At any time \( t \), if there are \( k \) cards beneath the card
-    labeled \( n \), then these cards appear in any order with equal
-    probability.
-\end{lemma}
-
-\begin{figure}
-    \centering
-\begin{asy}
-    size(5inches);
-
-real myfontsize = 12;
-real mylineskip = 1.2*myfontsize;
-pen mypen = fontsize(myfontsize, mylineskip);
-defaultpen(mypen);
-
-real eps = 0.1;
-pair vert = (0, eps);
-
-defaultpen(2);
-path card = (0,0)--(1,0);
-
-picture p = new picture;
-size(p, 2inches);
-
-label(p, "Card Number", shift(3*vert)*(-0.1,0));
-draw(p, shift(2*vert)*card);
-draw(p, shift(vert)*card);
-draw(p, card);
-label(p, "$\Large{\vdots}$", -vert);
-label(p, "$n$", shift(-2*vert)*(-0.1,0));
-draw(p, shift(-2*vert)*card); 
-draw(p, shift(-3*vert)*card); 
-label(p, "$\Large{\vdots}$", -4*vert);
-draw(p, shift(-5*vert)*card);
-
-draw(p, (1.15, -2*eps)--(1.15, -5*eps),
-     arrow=Arrows(),
-     bar= Bars(), black+1bp );
-label(p, "$k$ cards", (1.15, -3.5*eps), align=E );
-draw(p,  arc( (1.15, 0), r = eps, angle1=90, angle2=-90),
-      arrow=Arrow(), red+1bp);
-
-picture q = new picture;
-size(q, 2inches);
-
-label(q, "Card Number", shift(3*vert)*(-0.1,0));
-draw(q, shift(2*vert)*card);
-draw(q, shift(vert)*card);
-draw(q, card);
-label(q, "$\Large{\vdots}$", -vert);
-label(q, "$n$", shift(-2*vert)*(-0.1,0));
-draw(q, shift(-2*vert)*card); 
-draw(q, shift(-3*vert)*card); 
-label(q, "$\Large{\vdots}$", -4*vert);
-draw(q, shift(-5*vert)*card);
-
-draw(q, (1.15, -2*eps)--(1.15, -5*eps),
-     arrow=Arrows(),
-     bar= Bars(), black+1bp );
-label(q, "$k$ cards", (1.15, -3.5*eps), align=E );
-draw(q,  arc( (1.15, -eps), r = 3*eps, angle1=90, angle2=-90),
-      arrow=Arrow(), red+1bp);
-
-add(p.fit(),(0,0), (0,0) );
-add(q.fit(),(0,0), (100,0) );
-\end{asy}
-    \caption{Schematic diagram of the proof of the Lemma}%
-    \label{fig:cardshuffling:cards2}
-\end{figure}
-\begin{proof}
-    The proof is by induction on \( t \).  The base case \( t = 0 \) is
-    trivial.  Suppose that the claim is true for some \( t > 0 \).  In
-    the transition to \( t + 1 \), two cases can occur, refer to Figure~%
-    \ref{fig:cardshuffling:cards2} for a schematic diagram. First, the
-    top card is randomly placed above the card labeled \( n \) that is
-    somewhere in the stack.  Then nothing is changed and the proof is
-    complete.  Otherwise, the top card is placed in one of the \( k+1 \)
-    available spaces below the card labled \( n \) that is somewhere in
-    the stack.  The probability of any particular one of these
-    arrangements is
-    \[
-        \frac{1}{k!} \cdot \frac{1}{k+1} = \frac{1}{(k+1)!}
-    \] where \( \frac{1}{k!} \) comes from the induction hypothesis and
-    the \( \frac{1}{k+1} \) comes from the TTRS\@.  The proof is
-    complete.
-\end{proof}
-
-\begin{theorem}
-    Let \( \tau_{\text{top}} \) be the first time that card \( n \)
-    reaches the top of the deck.  Then \( P^{\tau_{\text{top}}+1} \) is
-    uniform on \( S_n \).  Furthermore, whatever permutation arises at
-    time \( \tau_{\text{top}}+1 \) is independent of \( \tau_{\text{top}}
-    \).
-\end{theorem}
-
-\begin{proof}
-    Follows easily from the Lemma, since at time \( \tau_{\text{top}} \)
-    the \( n-1 \) cards below card \( n \) will be uniformly distributed
-    over the \( (n-1)! \) possible permutations.  Then at time \( \tau_{\text
-    {top}}+ 1 \) card \( n \) is inserted uniformly at random in the
-    deck.
-\end{proof}
-
-\begin{remark}
-    Waiting for \( \tau_{\text{top}} \) is the same as waiting for
-    completion in the ``coupon collectors problem in reverse''.  More
-    precisely, collecting a coupon here is like putting the card below
-    the card labeled \( n \).  The first card is hard to put under \( n \),
-    in fact it happens with probability \( \frac{1}{n+1} \) but it gets
-    easier as time goes on.  This motivates the assertion that \( \E{\tau_
-    {\text{top}} + 1} = \Theta(n \log n) \) and that \( \Prob{\tau_{\text
-    {top}}+1 \ge n \log n + c n} \le \EulerE^{-c} \) for all \( c \ge 0 \).
-\end{remark}
-
-\begin{definition}
-    If \( \mu \) and \( \nu \) are probability distributions on \(
-    \Omega \), the \defn{total variation distance} of \( \mu \) from \(
-    \nu \) is%
-    \index{total variation distance}
-    \[
-        \| \mu - \nu \|_{TV} = \max_{A \subset \Omega} \abs{ \mu(A) -
-        \nu(A)} = \frac{1}{2} \sum\limits_{x \in \Omega} \abs{ \mu(x) -
-        \nu(x)}.
-    \]
-\end{definition}
-
-\begin{remark}
-    A ``bad event'' is an event with \( \mu \) and \( \nu \) measure \(
-    A \) very differently.
-\end{remark}
-
-\begin{definition}
-    We say that \( \tau_{\text{top}} \) is a \defn{strong stationary
-    time}%
-    \index{strong stationary time}
-    for \( X_t \), \( t \ge 0 \) if \( X_{\tau_{\text{top}}+1} \sim
-    \operatorname{unif}
-    (S_n) \), and \( X_{\tau_{\text{top}}+1} \) is independent of \(
-    \tau_{\text{top}} \).
-\end{definition}
-
-\begin{theorem}[Aldous, Diaconis]
-    For a finite, irreducible, aperiodic Markov chain \( Y_t \)
-    distributed as \( Q^t \) at time \( t \) and with stationary
-    distribution \( \pi \), and \( \tau \) is a strong stationary time,
-    then
-    \[
-        \| Q^{\tau} - \pi \|_{TV} \le \Prob(\tau \ge t)
-    \]
-\end{theorem}
-
-\begin{remark}
-    The hypotheses irreducible and aperiodic may not be strictly
-    necessary, but occur here because they are common in theorems about
-    Markov chains.
-\end{remark}
-
-Then immediately, \( \| P^{\tau_{\text{top}}+1} - U \|_{TV} \le \Prob{\tau_
-{\text{top}+1} \le \EulerE^{-c}} \).  This is like the coupon collector
-having \( n \) coupons.
-
-For simplicity in what follows, set \( d_n(t) = \| P^{\tau_{\text{top}}+1}
-- U \|_{TV} \).  Then for \( \epsilon > 0 \),
-\begin{enumerate}
-    \item
-        \( d_{n}(n \log n + n \log \epsilon^{-1} )\le \epsilon \) for \(
-        n \) sufficiently large.
-    \item
-        \( d_{n}(n \log n - n \log (C \epsilon^{-1})) \ge 1-\epsilon \)
-        for \( n \) sufficiently large.
-\end{enumerate}
-
-The justification is to find a ``bad event'' and use it to measure the
-total variation distance.  In fact, let \( A_j \) be the event that the
-bottom \( j \) cards of the deck appear in correct relative order.  Then
-\( U(A_j) = 1/j! \).  while \( P^t(A_j) = \).
-
-This gives a cut-off phenomenon, see Figure~%
-\ref{fig:cardshuffling:cards3}
-
-\begin{figure}
-    \centering
-\begin{asy}
-    import graph;
-
-size(5inches);
-
-real myfontsize = 12;
-real mylineskip = 1.2*myfontsize;
-pen mypen = fontsize(myfontsize, mylineskip);
-defaultpen(mypen);
-
-real f( real x) {
-  real a = 0.6;
-  real k = 50.0;
-  
-  real term = exp(-k*(x -a));
-  return term/( 1 + term);
-}
-
-draw( graph(f, 0,1));
-xaxis("$t$", Arrow);
-xtick(Label("$n \log n (1 -o(1))$", (0.4,0), 2S), (0.4, 0), S);
-xtick(Label("$n \log n $", (0.6, 0), 2N), (0.6, 0), N);
-xtick(Label("$n \log n (1 +o(1))$", (0.8,0), 2S), (0.8, 0), S);
-yaxis("$\| P^t - U \|_{TV}$", Arrow);
-\end{asy}
-    \caption{Schematic graph of the cut-off phenomenon for the Total
-    Variation distance of the Markov chain distribution from the uniform
-    distribution as a function of the number of steps.}%
-    \label{fig:cardshuffling:cards3}
-\end{figure}
-\begin{remark}
-    Note that \( n \log n + n \log \epsilon^{-1} = n \log n (1 + o(1)) \)
-    and\( n \log n - n \log \epsilon^{-1} = n \log n (1 - o(1)) \)
-\end{remark}
 
 \visual{Section Starter Question}{../../../../CommonInformation/Lessons/question_mark.png}
 \section*{Section Ending Answer}
+
+For card players, shuffling the deck to remove this order
+is essential so that cards dealt from the deck come ``at random'',
+that is, in an order uniformly distributed over all possible deck
+orders.  For the Top-to-Random-Shuffle \( 7 \) shuffles of the 3-card deck gets close to the
+uniform density, which turns out to be the stationary density. With a
+riffle shuffle on a standard deck, \( 7 \) shuffles gets close to the
+uniform density
 
 \subsection*{Sources} This section is adapted from
 \cite{mann94}.  Parts are also adapted from
@@ -1071,7 +1117,13 @@ yaxis("$\| P^t - U \|_{TV}$", Arrow);
 \begin{solution}
   
 \end{solution}
-
+\begin{exercise}
+  Check  that the Markov chain modeling shuffling under the
+  Top-To-Random shuffle is irreducible and aperiodic.
+\end{exercise}
+\begin{solution}
+  
+\end{solution}
 % \link{_soln.xml}{Solutions to Problems}
 
 \hr
@@ -1097,6 +1149,9 @@ yaxis("$\| P^t - U \|_{TV}$", Arrow);
     \item
     \item
 \end{enumerate}
+
+\section*{\solutionsname}
+\loadSolutions
 
 \hr
 
