@@ -8,6 +8,8 @@ settings.embed=true;
 settings.toolbar=false;
 viewportmargin=(2,2);
 
+import graph;
+
 size(5inches);
 
 real myfontsize = 12;
