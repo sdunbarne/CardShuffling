@@ -17,53 +17,17 @@ real mylineskip = 1.2*myfontsize;
 pen mypen = fontsize(myfontsize, mylineskip);
 defaultpen(mypen);
 
-real eps = 0.1;
-pair vert = (0, eps);
+real f( real x) {
+real a = 0.6;
+real k = 50.0;
 
-defaultpen(2);
-path card = (0,0)--(1,0);
+real term = exp(-k*(x -a));
+return term/( 1 + term);
+}
 
-picture p = new picture;
-size(p, 2inches);
-
-label(p, "Card Number", shift(3*vert)*(-0.1,0));
-draw(p, shift(2*vert)*card);
-draw(p, shift(vert)*card);
-draw(p, card);
-label(p, "$\Large{\vdots}$", -vert);
-label(p, "$n$", shift(-2*vert)*(-0.1,0));
-draw(p, shift(-2*vert)*card);
-draw(p, shift(-3*vert)*card);
-label(p, "$\Large{\vdots}$", -4*vert);
-draw(p, shift(-5*vert)*card);
-
-draw(p, (1.15, -2*eps)--(1.15, -5*eps),
-arrow=Arrows(),
-bar= Bars(), black+1bp );
-label(p, "$k$ cards", (1.15, -3.5*eps), align=E );
-draw(p, arc( (1.15, 0), r = eps, angle1=90, angle2=-90),
-arrow=Arrow(), red+1bp);
-
-picture q = new picture;
-size(q, 2inches);
-
-label(q, "Card Number", shift(3*vert)*(-0.1,0));
-draw(q, shift(2*vert)*card);
-draw(q, shift(vert)*card);
-draw(q, card);
-label(q, "$\Large{\vdots}$", -vert);
-label(q, "$n$", shift(-2*vert)*(-0.1,0));
-draw(q, shift(-2*vert)*card);
-draw(q, shift(-3*vert)*card);
-label(q, "$\Large{\vdots}$", -4*vert);
-draw(q, shift(-5*vert)*card);
-
-draw(q, (1.15, -2*eps)--(1.15, -5*eps),
-arrow=Arrows(),
-bar= Bars(), black+1bp );
-label(q, "$k$ cards", (1.15, -3.5*eps), align=E );
-draw(q, arc( (1.15, -eps), r = 3*eps, angle1=90, angle2=-90),
-arrow=Arrow(), red+1bp);
-
-add(p.fit(),(0,0), (0,0) );
-add(q.fit(),(0,0), (100,0) );
+draw( graph(f, 0,1));
+xaxis("$t$", Arrow);
+xtick(Label("$n \log n (1 -o(1))$", (0.4,0), 2S), (0.4, 0), S);
+xtick(Label("$n \log n $", (0.6, 0), 2N), (0.6, 0), N);
+xtick(Label("$n \log n (1 +o(1))$", (0.8,0), 2S), (0.8, 0), S);
+yaxis("$\| P^t - U \|_{TV}$", Arrow);
