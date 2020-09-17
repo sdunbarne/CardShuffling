@@ -18,18 +18,50 @@ defaultpen(mypen);
 real eps = 0.1;
 pair vert = (0, eps);
 
-defaultpen(5);
+defaultpen(2);
 path card = (0,0)--(1,0);
 
-label("Stack Position", shift(3*vert)*(1.1,0));
-draw(shift(2*vert)*card); label("$1$", shift(2*vert)*(1.1,0));
-draw(shift(vert)*card); label("$2$", shift(vert)*(1.1,0));
-draw(card); label("$3$",(1.1,0));
-label("$\Huge{\vdots}$", -vert);
-draw(shift(-2vert)*card); label("$k-1$", shift(-2*vert)*(1.1,0));
-draw(shift(-3*vert)*card); label("$k$", shift(-3*vert)*(1.1,0));
-label("$\Huge{\vdots}$", -4*vert);
-draw(shift(-5*vert)*card); label("$n$", shift(-5*vert)*(1.1,0));
+picture p = new picture;
+size(p, 2inches);
 
-draw( arc( (1.15, -eps/4), r = 2.20*eps, angle1=90, angle2=-90),
+label(p, "Card Number", shift(3*vert)*(-0.1,0));
+draw(p, shift(2*vert)*card);
+draw(p, shift(vert)*card);
+draw(p, card);
+label(p, "$\Large{\vdots}$", -vert);
+label(p, "$n$", shift(-2*vert)*(-0.1,0));
+draw(p, shift(-2*vert)*card);
+draw(p, shift(-3*vert)*card);
+label(p, "$\Large{\vdots}$", -4*vert);
+draw(p, shift(-5*vert)*card);
+
+draw(p, (1.15, -2*eps)--(1.15, -5*eps),
+arrow=Arrows(),
+bar= Bars(), black+1bp );
+label(p, "$k$ cards", (1.15, -3.5*eps), align=E );
+draw(p, arc( (1.15, 0), r = eps, angle1=90, angle2=-90),
 arrow=Arrow(), red+1bp);
+
+picture q = new picture;
+size(q, 2inches);
+
+label(q, "Card Number", shift(3*vert)*(-0.1,0));
+draw(q, shift(2*vert)*card);
+draw(q, shift(vert)*card);
+draw(q, card);
+label(q, "$\Large{\vdots}$", -vert);
+label(q, "$n$", shift(-2*vert)*(-0.1,0));
+draw(q, shift(-2*vert)*card);
+draw(q, shift(-3*vert)*card);
+label(q, "$\Large{\vdots}$", -4*vert);
+draw(q, shift(-5*vert)*card);
+
+draw(q, (1.15, -2*eps)--(1.15, -5*eps),
+arrow=Arrows(),
+bar= Bars(), black+1bp );
+label(q, "$k$ cards", (1.15, -3.5*eps), align=E );
+draw(q, arc( (1.15, -eps), r = 3*eps, angle1=90, angle2=-90),
+arrow=Arrow(), red+1bp);
+
+add(p.fit(),(0,0), (0,0) );
+add(q.fit(),(0,0), (100,0) );
