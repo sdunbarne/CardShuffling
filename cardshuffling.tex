@@ -1,6 +1,13 @@
+%%% -*-LaTeX-*-
+%%% cardshuffling.tex.orig
+%%% Prettyprinted by texpretty lex version 0.02 [21-May-2001]
+%%% on Wed Sep 16 08:38:45 2020
+%%% for Steve Dunbar (sdunbar@family-desktop)
+
 \documentclass[12pt]{article}
 
-\input{../../../../etc/macros} %\input{../../../../etc/mzlatex_macros}
+\input{../../../../etc/macros}
+%% \input{../../../../etc/mzlatex_macros}
 \input{../../../../etc/pdf_macros}
 
 \bibliographystyle{plain}
@@ -29,83 +36,86 @@
 % Everyone: contains no mathematics.
 % Student: contains scenes of mild algebra or calculus that may require guidance.
 Mathematically Mature:  may contain mathematics beyond calculus with
-proofs. % Mathematicians Only: prolonged scenes of intense rigor.
+proofs.  % Mathematicians Only: prolonged scenes of intense rigor.
 
 \hr
 
 \visual{Section Starter Question}{../../../../CommonInformation/Lessons/question_mark.png}
 \section*{Section Starter Question}
 
-Why shuffle a deck of cards?  What kind of shuffle do you use?  How
-many shuffles are sufficient to achive the purpose of shuffling?
+Why shuffle a deck of cards?  What kind of shuffle do you use?  How many
+shuffles are sufficient to achieve the purpose of shuffling?
 
 \hr
 
 \visual{Key Concepts}{../../../../CommonInformation/Lessons/keyconcepts.png}
 \section*{Key Concepts}
-%% This section needs extensive rewriting.
 
 \begin{enumerate}
-\item
-  Some shuffle types are a family of possible re-orderings with
-  probability distributions different from the riffle shuffle, leading
-  to different transition probabilities, and thus different Markov
-  processes.  The most well-studied type of shuffle is the riffle
-  shuffle and that is the main focus here.
-\item Going from card order\( \pi \) to \( \tau \) is the same as
-  composing \( \pi \) with the permutation \( \pi^{-1} \circ \tau \).
-  Now identify shuffles as functions on \( 1 \) to \( n \) to \( 1 \)
-  to \( n \), that is permutations.  Since a particular riffle shuffle
-  is one of a whole family of riffle shuffles, chosen with a
-  probability distribution \( Q \) from the family, the transition
-  probabilities are
-  \( p_{\pi \tau} = \Prob{X_t = \tau \given X_{t-1} = \pi} =
-  Q(\pi^{-1} \circ \tau) \).
-\item 
+    \item
+        Card deck shuffles are a family of possible re-orderings with
+        probability distributions, leading to transition probabilities,
+        and thus Markov processes.  The most well-studied type of
+        shuffle is the riffle shuffle and that is the main focus here.
+    \item
+        Going from card order\( \pi \) to \( \tau \) is the same as
+        composing \( \pi \) with the permutation \( \pi^{-1} \circ \tau \).
+        Now identify shuffles as functions on \( \set{1, \dots n} \) to \(
+        \set{1, \dots n} \), that is, permutations.%
+        Since a particular shuffle is one of a whole family of shuffles,
+        chosen with a probability distribution \( Q \) from the family,
+        the transition probabilities are
+        \[
+          p_{\pi \tau} = \Prob{X_t = \tau \given X_{t-1} = \pi}
+          = Q(\pi^{-1} \circ \tau).
+        \]
+        
+    \item
         The identification of shuffles or operations with permutations
-        themselves, \( Q \), the randomizing shuffle, is a probability
-        distribution on \( S_n \).
-     \item
+        gives a probability distribution on \( S_n \).
+    \item
         A \defn{Top-to-Random Shuffle},%
         \index{top-to-random-shuffle}
-        takes the top card from a stack of \(
-        n \) cards and inserts it in the gap between the \( (k-1) \)th
-        card and the \( k \)th card in the deck.
-      \item
-        The Top-To-Random-Shuffle demonstrates the cut-off phenomenon for the Total
-    Variation distance of the Markov chain distribution from the uniform
-    distribution as a function of the number of steps.
+        takes the top card from a stack of \( n \) cards and inserts it
+        in the gap between the \( (k-1) \)th card and the \( k \)th card
+        in the deck.
+    \item
+        The Top-To-Random-Shuffle demonstrates the cut-off phenomenon
+        for the Total Variation distance of the Markov chain
+        distribution from the uniform distribution as a function of the
+        number of steps.
     \item
         One realistic model of shuffling a deck of cards is the \defn{riffle
         shuffle}.
     \item
-        The set of cuts and interleavings now induces in a natural way a
-        density on the set of permutations.  Call this a \defn{riffle
-        shuffle} and denote it by \( R \).  That is, \( R(\pi) \) is the
-        sum of probabilities of each cut and interleaving that gives the
-        rearrangement of the deck corresponding to \( \pi \).
+        The set of cuts and interleavings in a riffle shuffle induces in
+        a natural way a density on the set of permutations.  Call this a
+        \defn{riffle shuffle} and denote it by \( R \).  That is, \( R(\pi)
+        \) is the sum of probabilities of each cut and interleaving that
+        gives the rearrangement of the deck corresponding to \( \pi \).
     \item
         \( 7 \) shuffles the of 3-card deck gets very close to the
         uniform density, which turns out to be the stationary density.
-     \item
+    \item
         The probability of achieving a permutation \( \pi \) when doing
         an \( a \)-shuffle is
         \[
             \frac{1}{a^n} \binom{n + a - r}{n},
         \] where \( r \) is the number of rising sequences in \( \pi \).
     \item
-        the set of all eigenvalues of \( P \) is exactly \( 1 \), \(
-        \frac{1}{2} \), \( \frac{1}{4} \) and \( \frac{1}{2^n} \).  The
-        second largest eigenvalue determines the rate of convergence to
-        the stationary distribution. For riffle shuffling, this
-        eigenvalue is \( \frac{1}{2} \).
+        The eigenvalues of the transition probability matrix for a
+        riffle shuffle are \( 1 \), \( \frac{1}{2} \), \( \frac{1}{4} \)
+        and \( \frac{1}{2^n} \).  The second largest eigenvalue
+        determines the rate of convergence to the stationary
+        distribution.  For riffle shuffling, this eigenvalue is \( \frac
+        {1}{2} \).
     \item
         For a finite, irreducible, aperiodic Markov chain \( Y_t \)
         distributed as \( Q^t \) at time \( t \) and with stationary
         distribution \( \pi \), and \( \tau \) is a strong stationary
         time, then
         \[
-            \| Q^{\tau} - \pi \|_{TV} \le \Prob(\tau \ge t)
+            \| Q^{\tau} - \pi \|_{TV} \le \Prob(\tau \ge t).
         \]
     \item
         Set \( d_n(t) = \| P^{\tau_{\text{top}}+1} - U \|_{TV} \).  Then
@@ -150,7 +160,7 @@ many shuffles are sufficient to achive the purpose of shuffling?
         The \defn{riffle shuffle} first cuts the deck randomly into two
         packets, one containing \( k \) cards and the other containing \(
         n-k \) cards.  Choose \( k \), the number of cards cut according
-        to the binomial density. Once the deck is cut into two packets,
+        to the binomial density.  Once the deck is cut into two packets,
         interleave the cards from each packet in any possible way, such
         that the cards from each packet keep their own relative order.
     \item
@@ -164,8 +174,8 @@ many shuffles are sufficient to achive the purpose of shuffling?
         A \defn{\( a \)-shuffle} is another probability density on \( S_n
         \).  Let \( a \) be any positive integer.  Cut the deck into \(
         a \) packets of nonnegative sizes \( m_1, m_2, \dots, m_a \)
-        with \( m_1 + \dots + m_a = n \) but some of the \( n_i \) may
-        be zero. Interleave the cards from each packet in any way, so
+        with \( m_1 + \cdots + m_a = n \) but some of the \( n_i \) may
+        be zero.  Interleave the cards from each packet in any way, so
         long as the cards from each packet, so long as the cards from
         each packet keep the relative order among themselves.  With a
         fixed packet structure, consider all interleavings equally
@@ -179,157 +189,166 @@ many shuffles are sufficient to achive the purpose of shuffling?
 
 \subsection*{General Setting}
 
-An unopened deck of cards has the face-up order (depending on manufacturer,
-but typically in the U.S.), 
-starting with the Ace of Spades:
+An unopened deck of cards has the face-up order (depending on
+manufacturer, but typically in the U.S.), starting with the Ace of
+Spades:
 \begin{itemize}
-\item Ace, 2, 3, 4, 5, 6, 7, 8, 9, 10, Jack, Queen, King of Spades,
-\item Ace, 2, 3, 4, 5, 6, 7, 8, 9, 10, Jack, Queen, King of Diamonds,
-\item King, Queen, Jack, 10, 9, 8, 7, 6, 5, 4, 3, 2, Ace of Clubs,
-  then
-\item King, Queen, Jack, 10, 9, 8, 7, 6, 5, 4, 3, 2, Ace of Hearts.
+    \item
+        Ace, 2, 3, 4, 5, 6, 7, 8, 9, 10, Jack, Queen, King of Spades,
+    \item
+        Ace, 2, 3, 4, 5, 6, 7, 8, 9, 10, Jack, Queen, King of Diamonds,
+    \item
+        King, Queen, Jack, 10, 9, 8, 7, 6, 5, 4, 3, 2, Ace of Clubs,
+        then
+    \item
+        King, Queen, Jack, 10, 9, 8, 7, 6, 5, 4, 3, 2, Ace of Hearts.
 \end{itemize}
 Call this the initial order of the deck.  Knowing this order is
-essential for some sleight of hand tricks performed by a
-magician.  For card players, shuffling the deck to remove this order
-is essential so that cards dealt from the deck come ``at random'',
-that is, in an order uniformly distributed over all possible deck orders.
-The main question here is: Starting from this order, how many shuffles are
-necessary to obtain a ``random'' deck order from the uniform distribution?
+essential for some sleight of hand tricks performed by a magician.  For
+card players, shuffling the deck to remove this order is essential so
+that cards dealt from the deck come ``at random'', that is, in an order
+uniformly distributed over all possible deck orders. The main question
+here is:  Starting from this order, how many shuffles are necessary to
+obtain a ``random'' deck order from the uniform distribution?
 
-In terms of Markov processes, the questions are: What is the state
-space, what is an appropriate transition probability matrix, what is
-the  steady state distribution, hopefully uniform, and how fast does
-the Markov process approach the steady state distribution?
+In terms of Markov processes, the questions are:  What is the state
+space, what is an appropriate transition probability matrix, what is the
+steady state distribution, hopefully uniform, and how fast does the
+Markov process approach the steady state distribution?
 
-For simplicity and definiteness, let the cards in the initial deck order above be
-numbered \( 1 \) to \( 52 \).  It will also be convenient to study much
-smaller decks of cards, say having \( n \) cards.  The set of states for a Markov process
-modeling the order of the deck is \( S_n \), the set of permutations on \( n \)
-cards.  For convenience, set the initial state \( X_0
-\) to be the identity permutation with probability \( 1 \).  In other
-words, choose the initial distribution as not shuffling the deck yet.
+For simplicity and definiteness, let the cards in the initial deck order
+above be numbered \( 1 \) to \( 52 \).  It will also be convenient to
+study much smaller decks of cards having \( n \) cards.  The set of
+states for a Markov process modeling the order of the deck is \( S_n \),
+the set of permutations on \( n \) cards.  For convenience, set the
+initial state \( X_0 \) to be the identity permutation with probability \(
+1 \).  In other words, choose the initial distribution as not shuffling
+the deck yet.
 
-Consider some type of shuffle, that is, a re-ordering
-operation on a state that takes an order to another order.  For
-example, the riffle shuffle, also called a dovetail shuffle or leafing
-the cards, is a common type of shuffle which
-interleaves packets of cards.  A perfect riffle shuffle, also called a
-faro shuffle, exactly splits
-the deck in half, then interleaves exactly one card from each half.  A
-perfect rifle shuffle difficult to
-perform, except for practiced magicians.  More commonly, packets of
-adjacent cards from  unevenly split portions interleave, creating a
-new order for the deck which nevertheless preserves some of the
-previous order in each packet.  Thus a particular riffle shuffle is one of a
-whole family of riffle shuffles, chosen  with a probability
-distribution on the family.  This probability distribution then
-induces a transition probability from state to state, and thus a
-Markov process.
+Consider a shuffle, that is, a re-ordering operation on a state that
+takes an order to another order.  For example, the riffle shuffle, also
+called a dovetail shuffle or leafing the cards, is a common type of
+shuffle that interleaves packets of cards.  A perfect riffle shuffle,
+also called a faro shuffle, splits the deck exactly in half, then
+interleaves cards alternately from each half.  A perfect rifle shuffle
+difficult to perform, except for practiced magicians.  More commonly,
+packets of adjacent cards from unevenly split portions interleave,
+creating a new order for the deck that nevertheless preserves some of
+the previous order in each packet.  Thus a particular riffle shuffle is
+one of a whole family of riffle shuffles, chosen with a probability
+distribution on the family.  This probability distribution then induces
+a transition probability from state to state, and thus a Markov process.
 
 Other types of shuffles have colorful names such as the Top-to-Random
-shuffle,
-Hindu shuffle,
-pile shuffle, Corgi shuffle, Mongean shuffle, and Weave shuffle.
-Some shuffle types are a family of possible re-orderings
-with probability distributions different from the riffle
+shuffle, Hindu shuffle, pile shuffle, Corgi shuffle, Mongean shuffle,
+and Weave shuffle. Some shuffle types are a family of possible
+re-orderings with probability distributions different from the riffle
 shuffle, leading to different transition probabilities, and thus
-different Markov processes.  The most well-studied type of shuffle is
-the riffle shuffle and that is the main focus here.
+different Markov processes.
 
-Going from card order\( \pi \) to \( \tau \) is
-the same as composing \( \pi \) with the permutation \( \pi^{-1} \circ
-\tau \).  Now identify shuffles as functions on  \( 1 \) to \( n \) to
-\( 1 \) to \( n \),  that is permutations.
-Since a particular riffle shuffle is one of a
-whole family of riffle shuffles, chosen  with a probability
-distribution \( Q \) from the family,
-the transition probabilities are \( p_{\pi \tau} = \Prob{X_t =
-\tau \given X_{t-1} = \pi} = Q(\pi^{-1} \circ \tau) \).  So now the
-goal is to describe the probability distribution \( Q \) and apply it
-to the Markov process.
+Going from card order \( \pi \) to \( \tau \) is the same as composing \(
+\pi \) with the permutation \( \pi^{-1} \circ \tau \).  Now identify
+shuffles as functions on \( \set{1, \dots n} \) to \( \set{1, \dots n} \),
+that is, permutations.%
+\index{permutation}
+Since a particular riffle shuffle is one of a whole family of riffle
+shuffles, chosen with a probability distribution \( Q \) from the
+family, the transition probabilities are \( p_{\pi \tau} = \Prob{X_t =
+\tau \given X_{t-1} = \pi} = Q(\pi^{-1} \circ \tau) \).  So now the goal
+is to describe the probability distribution \( Q \) and apply it to the
+Markov process.
 
+\begin{remark}
+    This section uses a list notation for permutations.  For example,
+    the notation \( \pi = [231] \) represents the permutation with \(
+    \pi(1) = 2 \), \( \pi(2) = 3 \) and \( \pi(3) = 1 \).  A common
+    alternative explicit notation for the same permutation is
+    \[
+        \begin{pmatrix}
+            1 & 2 & 3 \\
+            2 & 3 & 1
+        \end{pmatrix}
+        .
+    \] Writing the permutation in matrix form makes finding the inverse
+    obvious, \( \pi^{-1} = [312] \).
 
-\subsection*{Top to Random Shuffle}
-A particularly simple shuffle is the
- defn{Top-to-Random Shuffle},%
+    Recall also that sequential permutations are applied from right to
+    left.  Composing \( \pi \) with the permutation \( \pi^{-1} \circ
+    \tau \) obviously \( \tau = \pi \circ (\pi^{-1} \circ \tau) \). If \(
+    \tau = [132] \), then \( \pi^{-1} \circ \tau = [321] \) and \( [132]
+    = [231] \circ [321] \).
+
+    This section does not use cycle notation for permutations.
+\end{remark}
+
+\subsection*{Top to Random Shuffle} A particularly simple shuffle is the
+\defn{Top-to-Random Shuffle},%
 \index{top-to-random-shuffle}
-abbreviated TTRS hereafter.  The TTRS takes the top card from a stack of \( n \)
+abbreviated TTRS\@.  The TTRS takes the top card from a stack of \( n \)
 cards and inserts it in the gap between the \( (k-1) \)th card and the \(
 k \)th card in the deck.  See Figure~%
-\ref{fig:cardshuffling:cards1}. (Note that \( k = 1 \) is possible, in
+\ref{fig:cardshuffling:cards1}.  Note that \( k = 1 \) is possible, in
 which case the top card returns to the top.  Likewise, \( k = n+1 \) is
 also permitted, in which case the top card moves to the bottom of the
-card stack.)
+card stack.
 
-Consider the order of the cards to be a permutation on an alphabet of \(
-n \) symbols.  Then after \( t \) TTRS shuffles, the order of the deck
-has a probability distribution \( P^t_n = P^t \) on \( S_n \) where the
-subscript \( n \) is omitted for brevity for a fixed or implicit number
-of cards.
-
+Consider the order of the cards to be a permutation on \( n \) symbols.
 The TTRS is naturally a finite Markov chain \( X_t \) for \( t \ge 0 \)
-with \( X_t \in S_n \).  The transition probabilities are
+with \( X_t \in S_n \).  Set \( X_0 = \sigma_0 \), the identity
+permutation.  The transition probabilities are
 \[
     \Prob{X_{t+1} = \sigma' \given X_t = \sigma} =
     \begin{cases}
-        \frac{1}{n}     & \text{\( \sigma' \) is a TTRS of \( \sigma \)}\\
-        0       & \text{otherwise}
+        \frac{1}{n} & \text{\( \sigma' \) is a TTRS of \( \sigma \)}\\
+        0 & \text{otherwise}
     \end{cases}
-\] Additionally, it is natural to set \( X_0 = \sigma_0 \), the identity
-permutation.  Then \( X_t \sim P^t \), the distribution on card decks.
-It is routine to check to that \( X_t \) is irreducible.  It is also
-immediate that \( X_t \) is aperiodic since it is possible that the top
-card can recur back on top.  Therefore, this Markov chain must
-converge to a stationary distribution and by the previous Theorem, \( P^t
-\to
+\] defining the transition probability matrix \( P \). Then after \( t \)
+TTRS shuffles, the order of the deck has a probability distribution \( P^t_n
+X_0 = P^t X_0 \) on \( S_n \), where with an overload of notation \( X_0
+\) is the vector representing the initial state. Often the subscript \(
+n \) is omitted for brevity for a fixed or implicit number of cards.
+Then \( X_t \sim P^t X_0 \), the distribution on card decks. \( X_t \)
+is irreducible see the exercises.  It is also immediate that \( X_t \)
+is aperiodic since it is possible that the top card can recur back on
+top.  Therefore, this Markov chain must converge to a stationary
+distribution and by the previous Theorem, \( P^t X_0 \to
 \operatorname{unif}
 (S_n) \).
 
 \begin{example}
-The transition matrix for the TTRS on a deck with three cards is
-\[
-    \bordermatrix{
-        & [123] & [213] & [231] & [132] & [312] & [321] \cr
-        [123]   & \frac{1}{3}   & \frac{1}{3}   & \frac{1}{3}   & 0
-        & 0     & 0 \cr
-        [213]   & \frac{1}{3}   & \frac{1}{3}   & 0     & \frac{1}{3}
-        & 0     & 0 \cr
-        [231]   & 0     & 0     & \frac{1}{3}   & 0     & \frac{1}{3}
-        & \frac{1}{3} \cr
-        [132]   & 0     & 0     & 0     & \frac{1}{3}   & \frac{1}{3}
-        & \frac{1}{3} \cr
-        [312]   & \frac{1}{3}   & 0     & 0     & \frac{1}{3}   & \frac{1}
-        {3}     & 0 \cr
-        [321]   & 0     & \frac{1}{3}   & \frac{1}{3}   & 0     & 0
-        & \frac{1}{3} \cr
-    }
-\]
+    The transition matrix for the TTRS on a deck with three cards is
+    \[
+        \bordermatrix{ & [123] & [213] & [231] & [132] & [312] & [321]
+        \cr
+        [123] & \frac{1}{3} & \frac{1}{3} & \frac{1}{3} & 0 & 0 & 0 \cr
+        [213] & \frac{1}{3} & \frac{1}{3} & 0 & \frac{1}{3} & 0 & 0 \cr
+        [231] & 0 & 0 & \frac{1}{3} & 0 & \frac{1}{3} & \frac{1}{3} \cr
+        [132] & 0 & 0 & 0 & \frac{1}{3} & \frac{1}{3} & \frac{1}{3} \cr
+        [312] & \frac{1}{3} & 0 & 0 & \frac{1}{3} & \frac{1} {3} & 0 \cr
+        [321] & 0 & \frac{1}{3} & \frac{1}{3} & 0 & 0 & \frac{1}{3} \cr
+        }.
+    \]
 
-If the card deck is initially in order \( 1 \) to \( n \) from top to
-bottom, how many of these shuffles does it take for the deck to be
-sufficiently shuffled? It is easy to verify with matrix multiplication
-that numerically, speaking, starting with the identity ordering, the
-density of the permutations after \( 7 \) top-to-random shuffles is the
-first row of \( P^7 \).  In fact,
-\[
-    P^7 =
-    \begin{pmatrix}
-      0.16690 & 0.16690 & 0.16690 & 0.16644 & 0.16644 & 0.16644 \\
-      0.16690 & 0.16690 & 0.16644 & 0.16690 & 0.16644 & 0.16644 \\
-      0.16644 & 0.16644 & 0.16690 & 0.16644 & 0.16690 & 0.16690 \\
-      0.16644 & 0.16644 & 0.16644 & 0.16690 & 0.16690 & 0.16690 \\
-      0.16690 & 0.16644 & 0.16644 & 0.16690 & 0.16690 & 0.16644 \\
-      0.16644 & 0.16690 & 0.16690 & 0.16644 & 0.16644 & 0.16690 \\
-    \end{pmatrix}
-    .
-\] That is, \( 7 \) shuffles of the 3-card deck gets close to the
-uniform density, which turns out to be the stationary denisty. Part of
-this question is to refine what it means for the deck to be sufficiently
-shuffled.
-
-The eigenvalues of \( P \)  are \( 1, \frac{1}{3}, \frac{1}{3}, \frac
-{1}{3}, 0, 0 \).
+    If the card deck is initially in order \( 1 \) to \( n \) from top
+    to bottom, how many TTRS shuffles does it take for the deck to be
+    sufficiently shuffled?  Starting with the identity ordering, the
+    density of the permutations after \( 7 \) top-to-random shuffles is
+    the first row of \( P^7 \).  Numerically,
+    \[
+        P^7 =
+        \begin{pmatrix}
+            0.16690 & 0.16690 & 0.16690 & 0.16644 & 0.16644 & 0.16644 \\
+            0.16690 & 0.16690 & 0.16644 & 0.16690 & 0.16644 & 0.16644 \\
+            0.16644 & 0.16644 & 0.16690 & 0.16644 & 0.16690 & 0.16690 \\
+            0.16644 & 0.16644 & 0.16644 & 0.16690 & 0.16690 & 0.16690 \\
+            0.16690 & 0.16644 & 0.16644 & 0.16690 & 0.16690 & 0.16644 \\
+            0.16644 & 0.16690 & 0.16690 & 0.16644 & 0.16644 & 0.16690 \\
+        \end{pmatrix}
+        .
+    \] That is, \( 7 \) shuffles of the 3-card deck gets close to the
+    stationary density, which turns out to be the uniform density. The
+    eigenvalues of \( P \) are \( 1, \frac{1}{3}, \frac{1}{3}, \frac {1}
+    {3}, 0, 0 \).
 
 \end{example}
 
@@ -367,7 +386,7 @@ draw( arc( (1.15, -eps/4), r = 2.20*eps, angle1=90, angle2=-90),
 \end{figure}
 
 \begin{lemma}
-    At any time \( t \), if there are \( k \) cards beneath the last card
+    At any time \( t \), if \( k \) cards appear beneath the card
     labeled \( n \), then these cards appear in any order with equal
     probability.
 \end{lemma}
@@ -375,14 +394,14 @@ draw( arc( (1.15, -eps/4), r = 2.20*eps, angle1=90, angle2=-90),
 \begin{proof}
     The proof is by induction on \( t \).  The base case \( t = 0 \) is
     trivial.  Suppose that the claim is true for some \( t > 0 \).  In
-    the transition to \( t + 1 \), two cases can occur, refer to Figure~%
-    \ref{fig:cardshuffling:cards2} for a schematic diagram. First, the
+    the transition to \( t + 1 \), two cases can occur, see Figure~%
+    \ref{fig:cardshuffling:cards2} for a schematic diagram.  First, the
     top card is randomly placed above the card labeled \( n \) that is
     somewhere in the stack.  Then nothing is changed and the proof is
     complete.  Otherwise, the top card is placed in one of the \( k+1 \)
-    available spaces below the last card labled \( n \) that is somewhere in
-    the stack.  The probability of any particular one of these
-    arrangements is
+    available spaces below the last card labeled \( n \) that is
+    somewhere in the stack.  The probability of any particular one of
+    these arrangements is
     \[
         \frac{1}{k!} \cdot \frac{1}{k+1} = \frac{1}{(k+1)!}
     \] where \( \frac{1}{k!} \) comes from the induction hypothesis and
@@ -451,36 +470,36 @@ draw(q,  arc( (1.15, -eps), r = 3*eps, angle1=90, angle2=-90),
 add(p.fit(),(0,0), (0,0) );
 add(q.fit(),(0,0), (100,0) );
 \end{asy}
-    \caption{Schematic diagram of the proof of the Lemma}%
+    \caption{Schematic diagram of the proof of the Lemma.}%
     \label{fig:cardshuffling:cards2}
 \end{figure}
 
-
 \begin{theorem}
-    Let \( \tau_{\text{top}} \) be the first time that card \( n \)
-    reaches the top of the deck.  Then \( P^{\tau_{\text{top}}+1} \) is
-    uniform on \( S_n \).  Furthermore, whatever permutation arises at
-    time \( \tau_{\text{top}}+1 \) is independent of \( \tau_{\text{top}}
-    \).
+    \label{thm:cardshuffling:tautop} Let \( \tau_{\text{top}} \) be the
+    first time that card \( n \) reaches the top of the deck.  Then \( P^
+    {\tau_{\text{top}}+1}X_0 \) is uniform on \( S_n \).  Furthermore,
+    whatever permutation arises at time \( \tau_{\text{top}}+1 \) is
+    independent of \( \tau_{\text{top}} \).
 \end{theorem}
 
 \begin{proof}
-    Follows easily from the Lemma, since at time \( \tau_{\text{top}} \)
-    the \( n-1 \) cards below card \( n \) will be uniformly distributed
-    over the \( (n-1)! \) possible permutations.  Then at time \( \tau_{\text
-    {top}}+ 1 \) card \( n \) is inserted uniformly at random in the
-    deck.
+    The proof follows from the Lemma, since at time \( \tau_{\text{top}}
+    \) the \( n-1 \) cards below card \( n \) will be uniformly
+    distributed over the \( (n-1)! \) possible permutations.  Then at
+    time \( \tau_{\text {top}}+ 1 \) card \( n \) is inserted uniformly
+    at random in the deck.
 \end{proof}
 
 \begin{remark}
     Waiting for \( \tau_{\text{top}} \) is the same as waiting for
     completion in the ``coupon collectors problem in reverse''.  More
-    precisely, collecting a coupon here is like putting the card below
+    precisely, collecting a coupon here is putting the top card below
     the card labeled \( n \).  The first card is hard to put under \( n \),
     in fact it happens with probability \( \frac{1}{n+1} \) but it gets
     easier as time goes on.  This motivates the assertion that \( \E{\tau_
     {\text{top}} + 1} = \Theta(n \log n) \) and that \( \Prob{\tau_{\text
     {top}}+1 \ge n \log n + c n} \le \EulerE^{-c} \) for all \( c \ge 0 \).
+    See below for more details.
 \end{remark}
 
 \begin{definition}
@@ -496,13 +515,13 @@ add(q.fit(),(0,0), (100,0) );
 \end{definition}
 
 \begin{remark}
-    A ``bad event'' is an event that \( \mu \) and \( \nu \) measure \(
-    A \) very differently.
+    Probability distributions \( \mu \) and \( \nu \) are far apart in
+    total variation distance if there is a ``bad event'' \( A \) such
+    that \( \mu \) and \( \nu \) measure \( A \) differently.
 \end{remark}
 
 \begin{definition}
-    Define \( \tau_{\text{top}} \) as a \defn{strong stationary
-    time}%
+    Define \( \tau_{\text{top}} \) as a \defn{strong stationary time}%
     \index{strong stationary time}
     for \( X_t \), \( t \ge 0 \) if \( X_{\tau_{\text{top}}+1} \sim
     \operatorname{unif}
@@ -510,19 +529,83 @@ add(q.fit(),(0,0), (100,0) );
     \tau_{\text{top}} \).
 \end{definition}
 
+\begin{remark}
+    A \emph{stopping time} is a rule which tells the process to ``stop''
+    depending on the current value of the process.  The stopping time is
+    strong stationary if conditional on stopping after \( t \) steps the
+    value of the process is uniform on the state space.
+\end{remark}
+
+\begin{lemma}
+    \label{lem:cardshuffling:stoptime} Let \( Q \) be a probability
+    distribution on a finite group \( G \).  Let \( \tau \) be a strong
+    stationary time for \( Q \).  Then
+    \[
+        d_P(n) = \| Q^{\tau} - \pi \|_{TV} \le \Prob{\tau > k}
+    \] for all \( k \ge 0 \)
+\end{lemma}
+
+\begin{proof}
+    For any \( A \subset G \)
+    \begin{align*}
+        Q^{k}(A) &= \Prob{X_k \in A} \\
+        &= \sum_{j \le k} \Prob{X_k \in A, \tau = j} + \Prob{X_k \in A,
+        \tau >k} \\
+        &= \sum_{j \le k} U(A) \Prob{\tau = j} + \Prob{X_k \in A \given
+        \tau >k} \Prob{\tau > k} \\
+        &= U(A) + \left[ \Prob{X_k \in A \given \tau >k} - U(A) \right]
+        \Prob{\tau > k}
+    \end{align*}
+    and so
+    \[
+        d_P(n) = \| Q^{\tau} - \pi \|_{TV} \le \Prob{\tau > k}.
+    \]
+\end{proof}
+
+\begin{lemma}
+    \label{lem:cardshuffling:coupon} Sample uniformly with replacement
+    from an urn with \( n \) balls.  Let \( V \) be the number of draw
+    required until each ball has been drawn at least once.  Then
+    \[
+        \Prob{V > n \log n + c n} \le \EulerE^{-c}
+    \] for \( c \ge 0 \) and \( n \ge 1 \).
+\end{lemma}
+
+\begin{remark}
+    The lemma statement is another formulation of the coupon collectors
+    problem.%
+    \index{coupon collectors problem}
+    The usual formulation has \( n \) different types of coupons or
+    prizes in a cereal box.  On each draw, one obtains a coupon or prize
+    equally likely to be any one of the \( n \) types.  The goal is to
+    find the expected number of coupons one needs to gather before
+    obtaining a complete set of at least one of each type.
+\end{remark}
+
+\begin{proof}
+    Let \( m = n \log n + c n \).  For each ball \( b \) let \( A_b \)
+    be the event ``ball \( b \) not drawn in the first \( m \) draws.
+    Then
+    \[
+        \Prob{ V > m} = \Prob{ \bigcup_b A_b } \le \sum_{b} \Prob{A_b} =
+        n \left( 1 - \frac{1}{n} \right)^m \le \EulerE^{-m/n} = \EulerE^
+        {-c}.
+    \]
+\end{proof}
+
 \begin{theorem}[Aldous, Diaconis]
     For a finite, irreducible, aperiodic Markov chain \( Y_t \)
     distributed as \( Q^t \) at time \( t \) and with stationary
     distribution \( \pi \), and \( \tau \) is a strong stationary time,
     then
     \[
-        \| Q^{\tau} - \pi \|_{TV} \le \Prob(\tau \ge t)
+        \| Q^{\tau} - \pi \|_{TV} \le \Prob{\tau \ge t}.
     \]
 \end{theorem}
 
 \begin{remark}
     The hypotheses irreducible and aperiodic may not be strictly
-    necessary, but occur here because they are common in theorems about
+    necessary, but occur here because both are common in theorems about
     Markov chains.
 \end{remark}
 
@@ -530,23 +613,137 @@ Then immediately, \( \| P^{\tau_{\text{top}}+1} - U \|_{TV} \le \Prob{\tau_
 {\text{top}+1} \le \EulerE^{-c}} \).  This is like the coupon collector
 having \( n \) coupons.
 
-For simplicity in what follows, set \( d_n(t) = \| P^{\tau_{\text{top}}+1}
-- U \|_{TV} \).  Then for \( \epsilon > 0 \),
-\begin{enumerate}
-    \item
-        \( d_{n}(n \log n + n \log \epsilon^{-1} )\le \epsilon \) for \(
-        n \) sufficiently large.
-    \item
-        \( d_{n}(n \log n - n \log (C \epsilon^{-1})) \ge 1-\epsilon \)
-        for \( n \) sufficiently large.
-\end{enumerate}
+For simplicity in what follows, set \( d_P(n) = \| P^n - U \|_{TV} \).
+Then \( d_P(n) \) measures how close \( n \) repeated shuffles get the
+deck to being shuffled according to the uniform density.
 
-The justification is to find a ``bad event'' and use it to measure the
-total variation distance.  In fact, let \( A_j \) be the event that the
-bottom \( j \) cards of the deck appear in correct relative order.  Then
-\( U(A_j) = 1/j! \).  while \( P^t(A_j) = \).
+\begin{theorem}
+    For the TTRS shuffle
+    \begin{enumerate}
+        \item
+            \( d_P(n \log n + n \log epsilon^{-1} )\le \epsilon \) for \(
+            n \) sufficiently large.
+        \item
+            \( d_P(n \log n - n \log (C \epsilon^{-1})) \ge 1-\epsilon \)
+            for \( n \) sufficiently large.
+    \end{enumerate}
+\end{theorem}
 
-This gives a cut-off phenomenon, see Figure~%
+\begin{proof}
+    \begin{enumerate}
+        \item
+            Theorem~%
+            \ref{thm:cardshuffling:tautop} shows that \( \tau_{\text{top}}
+            \), the first time that the original bottom card has come to
+            the top and been inserted into the deck is a strong uniform
+            time for the TTRS\@.
+        \item
+            The goal is to show that \( \tau_{\text{top}} \) has the
+            same distribution as \( V \) in Lemma~%
+            \ref{lem:cardshuffling:coupon}.  Then the upper bound
+            follows from Lemma~%
+            \ref{lem:cardshuffling:coupon} and Lemma~%
+            \ref{lem:cardshuffling:stoptime}.
+        \item
+            Write
+            \[
+                \tau_{\text{top}} = \tau_1 + (\tau_2 - \tau_1) + \cdots
+                + (\tau_{n-1} - \tau_{n-2}) + (\tau_{\text{top}} - \tau_
+                {n-1})
+            \] where \( \tau_i \) is the time until card \( i \) is
+            placed under the original bottom card.
+        \item
+            When exactly \( i \) cards are under the original bottom
+            card \( b \), the chance that the current top card is
+            inserted below \( b \) is \( \frac{i+1}{n} \) and hence the
+            random variable \( (\tau_{i+1} - \tau_i) \) has geometric
+            distribution
+            \[
+                \Prob{(\tau_{i+1} - \tau_i) = j} = \frac{i+1}{n}\left(1
+                - \frac{i+1}{n} \right)^{j-1}
+            \] for \( j \ge 1 \).
+        \item
+            The random variable \( V \) in Lemma~%
+            \ref{lem:cardshuffling:coupon} can be written as
+            \[
+                V = (V - V_{n-1}) + (V_{n-1} - V_{n-2}) + \cdots + (V_2
+                - V_1) + V_1
+            \] where \( V_i \) is the number of draws required until \(
+            i \) distinct balls have been drawn at least once.
+        \item
+            After \( i \) distinct ball have been drawn, the chance that
+            a draw produces a not previously drawn ball is \( \frac{n-i}
+            {n} \).  So \( V_i - V_{i-1} \) has distribution
+            \[
+                \Prob{V_i - V_{i-1} = j} = \frac{n-i}{n} \left( 1 -
+                \frac{n-i}{n} \right)^{j-1}
+            \] for \( j \ge 1 \).
+        \item
+            Comparing, the corresponding terms \( (\tau_{i+1} - \tau_i) \)
+            and \( V_i - V_{i-1} \) have the same distribution, since
+            the summands in each term are independent, it follows that
+            the sums \( \tau \) and \( V \) have the same distribution,
+            as required.
+        \item
+            To prove the lower bound, fix \( j \) and \( A_j \) be the
+            set of configurations of the deck such that the bottom \( j \)
+            original cards stay in their original relative order.
+            Plainly \( U(A_j) = \frac{1}{j!} \).
+        \item
+            Let \( k = k(n) = n \log n - c_n n \) where \( c_n \to
+            \infty \). The goal is to show \( P^k(A_j) \to 1 \) as \( n
+            \to \infty \) for fixed \( j \).  Then \( d(k) \max\{P^k(A_j)
+            - U(A_j)\} \to 1 \) as \( n \to \infty \) for fixed \( j \),
+            establishing the lower bound.
+        \item
+            To prove \( P^k(A_j) \to 1 \) as \( n \to \infty \), note \(
+            P^k(A_j) \ge \Prob{\tau- \tau_{j-1} > k} \) because \( \tau
+            - \tau_{j-1} \) is distributed as the time for the card
+            initially \( j \)th from the bottom to come to the top and
+            be inserted.  If this has not happened by time \( k \), then
+            the original bottom \( j \) cards must still be in their
+            relative order at time \( k \).
+        \item
+            It suffices to show that \( \Prob{\tau- \tau_{j-1} \le k}
+            \to 0 \) as \( n \to \infty \) for fixed \( j \).  This
+            follows from Chebyshev's inequality.  Note that
+            \begin{align*}
+                \E{(\tau_{i+1} - \tau_i)} &= frac{n}{i+1} \\
+                \Var{(\tau_{i+1} - \tau_i)} &= \left( \frac{n}{i+1}
+                \right)^2 \left( 1 - \frac{i+1}{n} \right)
+            \end{align*}
+            and so
+            \[
+                \E{(\tau - \tau_j)} = \sum\limits_{i=j}^{n-1} \frac{n}{i+1}
+                = n \log n + O(n)
+            \] and
+            \[
+                \Var{(\tau - \tau_j)} = \sum\limits_{i=j}^{n-1} \left(
+                \frac{n}{i+1} \right)^2 \left( 1 - \frac{i+1}{n} \right)=
+                O(n^2).
+            \] Then using Chebyshev's inequality gives \( \Prob{\tau-
+            \tau_{j-1} \le k} \to 0 \) as \( n \to \infty \) for fixed \(
+            j \).
+    \end{enumerate}
+\end{proof}
+
+\begin{remark}
+    The strong uniform time property of \( \tau \) played no role in
+    establishing the lower bound.  The proof gets lower bounds by
+    guessing some set \( A \) for which \( P^k(A) - U(A) \) should be
+    large and then using
+    \[
+        d(k) = \| P^k - U \|_{\text{TV}} \ge \abs{P^k(A) - U(A)}.
+    \]
+\end{remark}
+Note that \( n \log n + n \log \epsilon^{-1} = n \log n (1 + o(1)) \)
+and \( n \log n - n \log \epsilon^{-1} = n \log n (1 - o(1)) \). This
+gives the sense that \( n \log n \) shuffles is about the right number
+of shuffles needed to bring the deck close to being uniformly shuffled.
+This gives a cut-off phenomenon, that is \( n \log n \) is a critical
+number shuffles such that \( d_P(n \log n + o(n)) \approx 0 \) but \( d_P
+(n \log n - o(n)) \approx 1 \) the distance from the stationary density
+changes abruptly at some value, see Figure~%
 \ref{fig:cardshuffling:cards3}.
 
 \begin{figure}
@@ -581,15 +778,21 @@ yaxis("$\| P^t - U \|_{TV}$", Arrow);
     distribution as a function of the number of steps.}%
     \label{fig:cardshuffling:cards3}
 \end{figure}
-\begin{remark}
-    Note that \( n \log n + n \log \epsilon^{-1} = n \log n (1 + o(1)) \)
-    and\( n \log n - n \log \epsilon^{-1} = n \log n (1 - o(1)) \)
-\end{remark}
+
+Note that this is quite different from the asymptotics of \( d_P(n) = \|
+P^n - U \|_{TV} \).  Peron-Frobenius theory says \( d_P(n) \asympt a
+\lambda^n \) where \( \lambda \) is the second largest eigenvalue, but
+these asymptotics miss the cut-off.
+
+The justification is to find a ``bad event'' and use it to measure the
+total variation distance.  In fact, let \( A_j \) be the event that the
+bottom \( j \) cards of the deck appear in correct relative order.  Then
+\( U(A_j) = 1/j! \).  while \( P^t(A_j) = \). %% Need to fix this up.
 
 \subsection*{The Riffle Shuffle}
 
-One realistic model of shuffling a deck cards is the \defn{riffle
-shuffle}.%
+One realistic model of shuffling a deck cards is the commonly used \defn
+{riffle shuffle}.%
 \index{riffle shuffle}
 The riffle shuffle is sometimes called the GSR shuffle since Gilbert and
 Shannon and independently Reeds first analyzed it.  First cut the deck
@@ -605,14 +808,13 @@ their own relative order.  This means the cards originally in positions \(
 1, 2, 3, \dots, k \) must still be in the same order after shuffling,
 even if there are other cards in between.  The same goes for cards
 originally in positions \( k+1, k+2, \dots, n \).  This requirement is
-quite natural, considering how a person shuffles two packets of
-cards, one in each hand.  The cards in the left hand must still be in
-the same relative order in the shuffled deck, no matter how they
-interleave with the cards in the other packet, because the cards drop in
-order when shuffling.  The same goes for the cards in the right hand.
-See Figure~%
-\ref{fig:carshuffling:riffle} for an illustration of a riffle shuffle on
-a \( 10 \)-card deck.
+quite natural, considering how a person shuffles two packets of cards,
+one in each hand.  The cards in the left hand must still be in the same
+relative order in the shuffled deck, no matter how they interleave with
+the cards in the other packet, because the cards drop in order when
+shuffling.  The same goes for the cards in the right hand. See Figure~%
+\ref{fig:cardshuffling:riffle} for an illustration of a riffle shuffle
+on a \( 10 \)-card deck.
 
 \begin{figure}
     \centering
@@ -662,8 +864,8 @@ for( int i=0; i<10; ++i) {
 }
 label("$i\qquad\pi_i$", (2.75, eps * 10));
 \end{asy}
-    \caption{A riffle shuffle on a \( 10 \)-card deck cut into a top
-    packet of \( 4 \) cards and bottom packet of \( 6 \) cards.}%
+    \caption{A riffle shuffle on a $ 10 $-card deck cut into a top
+    packet of $ 4 $ cards and bottom packet of $ 6 $ cards.}%
     \label{fig:cardshuffling:riffle}
 \end{figure}
 
@@ -675,93 +877,98 @@ completely interleaved, one card from each hand following one card from
 the other hand.  A perfect shuffle is easy to describe but difficult to
 perform, except for practiced magicians.
 
-Choose among all possible interleavings uniformly with \( k \) locations among \( n \)
-places for the first packet, fixing the locations for the cards of the
-other packet, giving \( \binom{n}{k} \) possible interleavings.  This
-means the probability of any one interleaving has probability \( 1/\binom
-{n}{k} \) of occurring. Hence the probability of any particular cut,
-followed by any particular interleaving is \( \frac{1}{2^n}\binom{n}{k}
-\cdot 1/\binom{n}{k} = \frac{1}{2^n} \).  Note that this probability has
-no information about the cut or the interleaving.  The density on
-possible  cuts and interleaving is uniform,.
+Choose among all possible interleavings uniformly with \( k \) locations
+among \( n \) places for the first packet, fixing the locations for the
+cards of the other packet.  This is the well-known ``stars and bars''
+counting argument, with the first packet playing the role of the
+``stars'', the second packet the ``bars'' creating \( \binom{n}{k} \)
+possible interleavings.  With uniform choice, this means the probability
+of any one interleaving has probability \( 1/\binom {n}{k} \) of
+occurring.  Hence the probability of any particular cut, followed by any
+particular interleaving is \( \frac{1}{2^n}\binom{n}{k} \cdot 1/\binom{n}
+{k} = \frac{1}{2^n} \).  Note that this probability has no information
+about the cut or the interleaving.  The density on possible cuts and
+interleaving is uniform,.
 
 The uniform density on the set of cuts and interleavings now induces in
-a natural way a density on the set of permutations.  Call this a \emph{riffle
-shuffle} and denote it by \( R \).  That is, \( R(\pi) \) is the sum of
-probabilities of each cut and interleaving that gives the rearrangement
-of the deck corresponding to \( \pi \).  In short, the chance of any
-arrangement of cards occurring under riffle shuffling is the proportion
-of cuts and interleavings that give that arrangement.
+a natural way a density on the set of permutations.  Call the density a
+\emph{riffle shuffle} and denote it by \( R \).  That is, \( R(\pi) \)
+is the sum of probabilities of each cut and interleaving that gives the
+rearrangement of the deck corresponding to \( \pi \).  In short, the
+chance of any arrangement of cards occurring under riffle shuffling is
+the proportion of cuts and interleavings that give that arrangement.
 
 \begin{example}
     Consider the riffle shuffle on a \( 3 \)-card deck as a Markov
-    chain. The probability distribution for \( R \) is in
-    Table~\ref{tab:cardshuffling:riffle3}.  To obtain the entries in
-    Table~\ref{tab:cardshuffling:riffle3}, 
-    systematically go through the possible cuts and interleavings.
-    Cutting three cards into the left packet, and none in the right packet, the only
-    possible interleaving trivially leaves the deck unchanged.  With a
-    cut into \( 2 \) cards on the left, \( 1 \) card on the right, one
-    interleaving drops the right packet card on the bottom, the left
-    packet cards as the top \( 2 \), leaving the deck unchanged.  Two
-    other interleavings move the card in the right packet to
-    the middle or the top.  The other two cuts are symmetric to the
-    cuts described above, so \( 4 \) of the \( 8 \) cuts and
-    interleavings keep the deck in the original order.  However, one
-    shuffle each moves the formerly bottom card labeled \( 3 \) to the
-    middle or top position, leaving cards \( 1 \) and \( 2 \) in that
-    order in the shuffled deck.    A single riffle shuffle cannot
+    chain.  The probability distribution for \( R \) is in Table~%
+    \ref{tab:cardshuffling:riffle3}.  To obtain the entries in Table~%
+    \ref{tab:cardshuffling:riffle3}, systematically go through the
+    possible cuts and interleavings. Cutting three cards into the left
+    packet, and none in the right packet, the only possible interleaving
+    trivially leaves the deck unchanged.  With a cut into \( 2 \) cards
+    on the left, \( 1 \) card on the right, one interleaving drops the
+    right packet card on the bottom, the left packet cards as the top \(
+    2 \), leaving the deck unchanged.  Two other interleavings move the
+    card in the right packet to the middle or the top.  The other two
+    cuts are symmetric to the cuts described above, so \( 4 \) of the \(
+    8 \) cuts and interleavings keep the deck in the original order.
+    However, one shuffle each moves the formerly bottom card labeled \(
+    3 \) to the middle or top position, leaving cards \( 1 \) and \( 2 \)
+    in that order in the shuffled deck.  A single riffle shuffle cannot
     reverse the order of the deck.
 
     \begin{table}
-      \centering
-      \caption{Probability distribution for a riffle shuffle on a $3$
-        card deck. }
-    \begin{tabular}{ccccccc}
-        $\pi$    & $[123]$       & $[213]$       & $[231]$       & $[132]$       & $[312]$       & $[321]$ \\ 
-        $Q(\pi)$ & $\frac{1}{2}$ & $\frac{1}{8}$ & $\frac{1}{8}$ & $\frac{1}{8}$ & $\frac{1}{8}$ & 0.      \\ 
-    \end{tabular}
-      \label{tab:cardshuffling:riffle3}
+        \centering
+        \caption{Probability distribution for a riffle shuffle
+          on a $ 3 $ card deck.}
+        \begin{tabular}{ccccccc}
+            $\pi$    & $[123]$       & $[213]$       & $[231]$       & $[132]$       & $[312]$       & $[321]$ \\ 
+            $Q(\pi)$ & $\frac{1}{2}$ & $\frac{1}{8}$ & $\frac{1}{8}$ & $\frac{1}{8}$ & $\frac{1}{8}$ & 0.      \\ 
+        \end{tabular}%
+        \label{tab:cardshuffling:riffle3}
     \end{table}
 
-    To obtain the entries in Table~\ref{tab:cardshuffling:riffle3} do
-    the computation for a typical element of the transition
-    probability matrix, say \( p_{\pi,\tau} \) with \( \pi = [213] \)
-    and \( \tau = [132] \). Then \( \pi^{-1} = [213] \) and \( \pi^{-1}
-    \circ \tau = [231] \).  Now \( R([231]) = \frac{1}{8} \), giving \(
-    p_{[213] [132]} = \frac{1}{8} \) in the probability transition
-    matrix
+    To obtain the entries in Table~%
+    \ref{tab:cardshuffling:riffle3} do the computation for a typical
+    element of the transition probability matrix, say \( p_{\pi,\tau} \)
+    with \( \pi = [213] \) and \( \tau = [132] \).  Then \( \pi^{-1} = [213]
+    \) and \( \pi^{-1} \circ \tau = [231] \).  Now \( R([231]) = \frac{1}
+    {8} \), giving \( p_{[213] [132]} = \frac{1}{8} \) in the
+    probability transition matrix.
 
     The full probability transition matrix under this ordering of the
     permutations is
     \[
-        \bordermatrix{
-            & [123]      & [213]      & [231]       & [132]       & [312]       & [321] \cr
-       [123]& \frac{1}{2}& \frac{1}{8}& \frac{1}{8} & \frac{1}{8} & \frac{1}{8} & 0 \cr
-       [213]& \frac{1}{8}& \frac{1}{2}& \frac{1}{8} & \frac{1}{8} & 0           & \frac{1}{8} \cr
-       [231]& \frac{1}{8}& \frac{1}{8}& \frac{1}{2} & 0           & \frac{1}{8} & \frac{1}{8} \cr
-       [132]& \frac{1}{8}& \frac{1}{8}& 0           & \frac{1}{2} & \frac{1}{8} & \frac{1}{8} \cr
-       [312]& \frac{1}{8}& 0          & \frac{1}{8} & \frac{1}{8} & \frac{1}{2} & \frac{1}{8} \cr
-       [321]& 0          & \frac{1}{8}& \frac{1}{8} & \frac{1}{8} & \frac{1}{8} & \frac{1}{2} \cr
-        }
-    \]
-
-    Although in this case, the \( n=3 \) riffle shuffle, the matrix is
-    symmetric, this is in general not true, the riffle shuffle with deck
-    sizes greater than \( 3 \) is always nonsymmetric.  See the exercises.
+        \bordermatrix{  & [123] & [213] & [231] & [132] & [312] & [321]
+        \cr
+        [123]   & \frac{1}{2}   & \frac{1}{8}   & \frac{1}{8}   & \frac{1}
+        {8}     & \frac{1}{8}   & 0 \cr
+        [213]   & \frac{1}{8}   & \frac{1}{2}   & \frac{1}{8}   & \frac{1}
+        {8}     & 0     & \frac{1}{8} \cr
+        [231]   & \frac{1}{8}   & \frac{1}{8}   & \frac{1}{2}   & 0
+        & \frac{1}{8}   & \frac{1}{8} \cr
+        [132]   & \frac{1}{8}   & \frac{1}{8}   & 0     & \frac{1}{2}
+        & \frac{1}{8}   & \frac{1}{8} \cr
+        [312]   & \frac{1}{8}   & 0     & \frac{1}{8}   & \frac{1}{8}
+        & \frac{1}{2}   & \frac{1}{8} \cr
+        [321]   & 0     & \frac{1}{8}   & \frac{1}{8}   & \frac{1}{8}
+        & \frac{1}{8}   & \frac{1}{2} \cr
+        }.
+    \] Although in this case, the \( n=3 \) riffle shuffle, the matrix
+    is symmetric, this is in general not true, the riffle shuffle with
+    deck sizes greater than \( 3 \) is nonsymmetric, see the exercises.
 \end{example}
 
 First note that the Markov chain for riffle shuffling is regular, that
-is, there is some number of shuffles after which any permutation has a
-positive probability of appearing.  In fact, any number of shuffles
-greater than \( \log_2 n \) will do.  Since the riffle shuffle Markov
-chain is regular, there is a unique stationary density, which is the
-uniform density on \( S_n \).
+is, any permutation has a positive probability of appearing after
+sufficiently many shuffles.  In fact, any number of shuffles greater
+than \( \log_2 n \) will do. Since the riffle shuffle Markov chain is
+regular, there is a unique stationary density, which is the uniform
+density on \( S_n \).
 
-Now it is easy to verify with matrix multiplication that numerically,
-speaking, starting with the identity ordering, the density of the
-permutations after \( 7 \) riffle shuffles is the first row of \( P^7 \).
-In fact,
+Starting with the identity ordering, the density of the permutations
+after \( 7 \) riffle shuffles is the first row of \( P^7 \).  With
+matrix multiplication, the density is nearly uniform. In fact,
 \[
     P^7 =
     \begin{pmatrix}
@@ -779,24 +986,22 @@ In fact,
         0.16666 & 0.17059 \\
     \end{pmatrix}
     .
-\] That is, \( 7 \) shuffles the of 3-card deck gets very close to the
-uniform density, which turns out to be the stationary density.
+\] That is, \( 7 \) shuffles of the 3-card deck gets close to the
+stationary density, which turns out to be the uniform density.
 
 \subsection*{Probability of a Permutation Under Riffle Shuffle}
 
-Define a
-\defn{rising sequence}.%
+Define a \defn{rising sequence}%
 \index{rising sequence}
-of a permutation as a maximal increasing subsequence
-within the permutation, potentially with gaps in position.  In
-more detail applied to shuffled decks of cards, say \( x \) is a
-particular card from the deck.   After the position of \( x \)
-look for the card labeled \( x+1 \).
-If found , repeat the procedure and looking after the \( x+1 \) card for
+of a permutation as a maximal increasing subsequence within the
+permutation, potentially with gaps in position.  In more detail applied
+to shuffled decks of cards, say \( x \) is a particular card from the
+deck.  After the position of \( x \) look for the card labeled \( x+1 \).
+If found, repeat the procedure and looking after the \( x+1 \) card for
 the \( x+2 \) card.  Keep going in this manner until it is not possible
-to find the next card adjacent.  Now go back to the original card \( x \) and
-look for the \( x-1 \) card immediately prior and so on.  When done,
-the subsequence of the permutation containing \( x \)  is a rising
+to find the next card adjacent.  Now go back to the original card \( x \)
+and look for the \( x-1 \) card immediately prior and so on.  When done,
+the subsequence of the permutation containing \( x \) is a rising
 sequence.  A little thought shows that a deck breaks down as a disjoint
 union of its rising sequences, since the union of any two consecutively
 increasing subsequences with that element is a rising subsequence.
@@ -804,14 +1009,14 @@ increasing subsequences with that element is a rising subsequence.
 \begin{example}
     Suppose that a permutation of a deck is \( 45162378 \).  Start with
     any card, say \( 3 \).  Look for \( 4 \) and do not find it.  Look
-    before the \( 3 \) and find \( 2 \) and before it, with a gap, find \( 1 \).  So
-    one of the rising sequences of this permutation is \( 123 \).  Now
-    start again, this time with say \( 6 \).  After a gap, find \( 7 \) and then
-    after it \( 8 \).  Before \( 6 \) with a gap find \( 5 \) and then \( 4 \).  So
-    another rising sequence is \( 45678 \).  This accounts for all cards
-    and the deck has only two rising sequences.  This is immediately
-    clear when writing the sequence as \( 45_{1}6_{23}78 \), offsetting
-    the two subsequences.
+    before the \( 3 \) and find \( 2 \) and before it, with a gap, find \(
+    1 \).  So one of the rising sequences of this permutation is \( 123 \).
+    Now start again, this time with say \( 6 \).  After a gap, find \( 7
+    \) and then after it \( 8 \).  Before \( 6 \) with a gap find \( 5 \)
+    and then \( 4 \).  So another rising sequence is \( 45678 \).  This
+    accounts for all cards and the deck has only two rising sequences.
+    Writing the sequence as \( 45_{1}6_{23}78 \), offsetting the two
+    subsequences makes this clear.
 \end{example}
 
 \begin{example}
@@ -823,32 +1028,32 @@ increasing subsequences with that element is a rising subsequence.
 
 \begin{example}
     Note that \( 45_{1}6_{23}78 \) is a possible result of a riffle
-    shuffle. Here the cut must divide the deck into two packets such
+    shuffle.  Here the cut must divide the deck into two packets such
     that the length of each is the same as the length of the
     corresponding rising sequence.  So if the deck started in the
-    natural order and the deck is cut into \( 123 \) and \( 45678 \),
-    then the shuffle interleaves by taking \( 4 \), then \( 5 \), then \(
-    1 \) then \( 6 \), then \( 2 \), then \( 7 \), then \( 8 \), thus
-    obtaining the given order through riffling.
+    natural order and the deck is cut into \( 123 \) on left and \(
+    45678 \) on the right, then the shuffle interleaves by dropping on
+    the bottom \( 8 \), then \( 7 \), then \( 3 \), then \( 2 \), then \(
+    6 \), then \( 1 \), then \( 5 \) and \( 4 \), thus obtaining the
+    given top down order through riffling.
 \end{example}
 
-In general, a permutation \( \pi \) of \( n \) cards made by a riffle
-shuffle will have exactly \( 2 \) rising sequences (unless it is the
-identity which has exactly \( 1 \) rising sequence).  This is a
+In general, a permutation \( \pi \) of \( n \) cards in original order
+made by a riffle shuffle will have exactly \( 2 \) rising sequences (unless
+it is the identity with exactly \( 1 \) rising sequence).  This is a
 consequence of the definition of a riffle shuffle as a cut and an
-interleaving.   Conversely any permutation of \( n
-\) card with \( 1 \) or \( 2 \) rising sequences can be obtained by a
-physical shuffle.  The lengths of the rising sequences define the size
-of the cuts, the gaps in a subsequence define the interleavings.
-Therefore a mathematical definition of a riffle
-shuffle can be made as ``a permutation with \( 1 \) or \( 2 \) rising
-sequences.'' Suppose \( c \) cards are cut off the top.  Then there are \(
-\binom{n}{c} \) possible riffle shuffles, (one of which is the identity
-shuffle).  The reason is easy to see from Figure~%
+interleaving.  Conversely any permutation of \( n \) cards with \( 1 \)
+or \( 2 \) rising sequences can be obtained by a physical shuffle.  The
+lengths of the rising sequences define the size of the cuts, the gaps in
+a subsequence define the interleavings. Therefore a mathematical
+definition of a riffle shuffle can be made as ``a permutation with \( 1 \)
+or \( 2 \) rising sequences.'' Suppose \( c \) cards are cut off the
+top.  Then there are \( \binom{n}{c} \) possible riffle shuffles, (one
+of which is the identity shuffle).  As in Figure~%
 \ref{fig:cardshuffling:riffle}, after the shuffle, the red and black
 cards form a binary \( n \)-tuple with \( c \) red cards, there are \(
-\binom{n}{c} \) such \( n \)-tuples.  The total number of possible
-riffle shuffles is
+\binom{n}{c} \) such \( n \)-tuples, one of which is the original order.
+The total number of possible riffle shuffles is
 \[
     1 + \sum\limits_{c=0}^n \left( \binom{n}{c} - 1\right) = 2^n - n.
 \]
@@ -857,27 +1062,26 @@ The next goal is to get similar results about what happens after
 multiple riffle shuffles.  This can be done by considering \( a \)-shuffles.
 A \defn{\( a \)-shuffle} is another probability density on \( S_n \).
 Let \( a \) be any positive integer.  Cut the deck into \( a \) packets
-of nonnegative sizes \( m_1, m_2, \dots, m_a \) with \( m_1 + \dots + m_a
+of nonnegative sizes \( m_1, m_2, \dots, m_a \) with \( m_1 + \cdots + m_a
 = n \) but some of the \( m_i \) may be zero.  The probability of this
 particular packet structure is given by the multinomial density:
 \[
     \frac{1}{a^n} \binom{n}{m_1, m_2, \dots, m_a}.
-  \] Interleave the cards from each packet in any way,
-  so long as the cards from each packet keep the
-relative order among themselves.  With a fixed packet structure,
-consider all interleavings equally likely.  Count the number of such
-interleavings as the number of ways of choosing among \( n \) positions
-in the deck, \( m_1 \) places for things of one type, \( m_2 \) places
-for things of another type and so on.  The count is the multinomial
-coefficient
+\] Interleave the cards from each packet in any way, so long as the
+cards from each packet keep the relative order among themselves.  With a
+fixed packet structure, consider all interleavings equally likely.
+Count the number of such interleavings as the number of ways of choosing
+among \( n \) positions in the deck, \( m_1 \) places for things of the
+first type, \( m_2 \) places for things of the second type and so on.
+The count is the multinomial coefficient
 \[
     \binom{n}{m_1, m_2, \dots, m_a}.
 \] Hence the probability of a particular rearrangement, i.e.\ a cut of
 the deck and an interleaving is
 \[
-    \frac{1}{a^n} \binom{n}{m_1, m_2, \dots, m_a} \cdot \binom{n}{m_1, m_2,
-    \dots, m_a} = \frac{1}{a^n}.
-\] So it turns out that each combination of a parituclar cut into
+    \left.  \frac{1}{a^n} \binom{n}{m_1, m_2, \dots, m_a} \right/ \binom
+    {n}{m_1, m_2, \dots, m_a} = \frac{1}{a^n}.
+\] So it turns out that each combination of a particular cut into
 packets and an interleaving is equally likely, just as in the riffle
 shuffle.  The induced density on the permutations leading to the cuts
 and shuffles is then called the \( a \)-shuffle,%
@@ -904,23 +1108,23 @@ It turns out that when performing a single \( a \)-shuffle, the
 probability of achieving a particular permutation \( \pi \) does not
 depend on the information contained in \( \pi \), but only on the number
 of rising sequences that \( \pi \) has.  In other words, the
-permutations \( [12534], [34512], [51234] \), and \( [23451] \) all have
-the same probability under any \( a \)-shuffle, since they all have
-exactly two rising sequences.
+permutations \( [12534], [34512], [51234] \), and \( [23451] \) have the
+same probability under any \( a \)-shuffle, since each has exactly two
+rising sequences.
 
 A useful code through \( n \)-digit base-\( a \) numbers specifies how
 to make a particular \( a \)-shuffle.  Here a ``shuffle'' indicates a
-particular way of rearranging the deck, not the probability density of
+particular way of rearranging the deck, not the probability density on
 all such rearrangements.  Let \( A \) be an \( n \)-digit base-\( a \)
-number. Count the number of \( 0 \)s in \( A \), this will be the size
+number.  Count the number of \( 0 \)s in \( A \), this will be the size
 of the first packet \( m_1 \) in the \( a \)-shuffle.  Then \( m_2 \) is
 the number of \( 1 \)s in \( A \) and so on up to \( m_a \), the number
 of \( (a-1) \)s.  This cuts the deck into \( a \) packets.  Now take the
 beginning packet of cards of size \( m_1 \).  Envision placing these
 cards on top of all the \( 0 \) digits keeping their order as a rising
 sequence.  Do the same for the next packet of size \( m_2 \), placing
-them on the \( 1 \)s.  Continue up through the \( (a-1) \)s,.  This
-particular way of rearranging the cards will then be the particualr cut
+them on the \( 1 \)s.  Continue up through the \( (a-1) \)s.  This
+particular way of rearranging the cards will then be the particular cut
 and the interleaving corresponding to \( A \).  Note that the number of
 such encodings is \( a^n \).
 
@@ -928,8 +1132,8 @@ such encodings is \( a^n \).
     Let the deck start in natural order.  Let \( A = 23004103 \) be the
     code for a particular \( 5 \)-shuffle of the \( 8 \)-card deck.  The
     are three \( 0 \)s, one \( 1 \), one \( 2 \), two \( 3 \)s and one \(
-    4 \) Thus \( m_1 = 3 \), \( m_2 = 1 \), \( m_3 =1 \), \( m_4 = 2 \)
-    and \( m_5 = 1 \).  So the cut deck into \( 123|4|5|67|8 \).  We put
+    4 \).  Thus \( m_1 = 3 \), \( m_2 = 1 \), \( m_3 =1 \), \( m_4 = 2 \)
+    and \( m_5 = 1 \).  So cut the deck into \( 123|4|5|67|8 \).  We put
     \( 123 \) where the \( 0 \)s are in \( A \), \( 4 \) where the \( 1 \)
     is, \( 5 \) where the \( 2 \) is, \( 67 \) where the \( 3 \)s are,
     and \( 8 \) where the \( 4 \) is.  Then get a shuffled deck of \(
@@ -939,9 +1143,9 @@ such encodings is \( a^n \).
 This code gives a bijective correspondence between \( n \)-digit base-\(
 a \) numbers and the set of all ways of cutting and interleaving an \( n
 \)-card deck according to the \( a \)-shuffle.  In fact, if we put the
-uniform denstiy on the set of \( n \)-digit base-\( a \) numbers, this
+uniform density on the set of \( n \)-digit base-\( a \) numbers, this
 transfers to the correct uniform probability density for cutting and
-interleaving in an \( a \)-shuffle which means the correct density in
+interleaving in an \( a \)-shuffle which means the correct density
 induced on \( S_n \).
 
 \begin{theorem}
@@ -955,39 +1159,38 @@ induced on \( S_n \).
 \begin{proof}
     \begin{enumerate}
         \item
-            If we establish and fix where the \( (a-1) \) cuts occur in
-            an \( a \)-shuffle, then whatever permutations can actually
-            be achieved by interleaving the cards from this cut/packet
-            structure can be achieved in exactly one way:  Just drop
-            thte cards in exactly the order of the permutation.
+            Establish and fix where the \( (a-1) \) cuts occur in an \(
+            a \)-shuffle, then whatever permutations can actually be
+            achieved by interleaving the cards from this cut and packet
+            structure can be achieved in exactly one way:  Just drop the
+            cards in exactly the order of the permutation.
         \item
             Thus the probability of achieving a particular permutation
             is the number of possible ways of making cuts that could
             actually cause that permutation, divided by the total number
             of ways of making cuts and interleaving for an \( a \)-shuffle.
         \item
-            If we have \( r \) rising sequences in \( \pi \), we know
-            exactly where \( (r-1) \) of the cuts have to have been:
-            between pairs of consecutive cards in the narually ordered
-            deck such that the first card ends one rising sequence of \(
-            \pi \).
+            Having \( r \) rising sequences in \( \pi \) determines
+            exactly where \( (r-1) \) of the cuts must have been:
+            between pairs of consecutive cards in the naturally ordered
+            deck such that the first card of the pair ends one rising
+            sequence of \( \pi \).
         \item
             This means that we have \( (a-1) - (r-1) = a-r \)
-            unspecified or free cuts which can go anywhere.
+            unspecified or free cuts that can go anywhere.
         \item
             So count the number of ways of putting \( a-r \) cuts among \(
             n \) cards.  The standard ``stars and bars'' combinatorial
             argument counts
             \[
                 \binom{n + a-r}{n}
-            \] ways to do this, i.e.\ choosing \( n \) places among \( (a-r)
-            + n \).
+            \] ways to do this, i.e.\ choosing \( n \) places among \( n
+            +(a-r) \).  This is the numerator of the probability.
         \item
-            This is the numerator of the probability expressed as a
-            fraction.  The denominator is the number of possible ways to
-            cut and interleave for an \( a \)-shuffle.  In encoding the
-            number of shuffles, then are \( a^n \) ways to do this, the
-            number of \( n \)-digit base \( a \) numbers.
+            The denominator is the number of possible ways to cut and
+            interleave for an \( a \)-shuffle.  The encoding of the
+            shuffles as the number of \( n \)-digit base \( a \) numbers
+            gives \( a^n \) ways to do this.
     \end{enumerate}
 \end{proof}
 
@@ -995,103 +1198,73 @@ induced on \( S_n \).
 
 Recall the modeling of card shuffling as a Markov chain.  The initial
 state \( X_0 \) is the identity permutation, that is cards in the
-initial deck order numbered \( 1 \) to \(n \), with probability
-\( 1 \).  A particular riffle shuffle, one of a whole family of riffle
-shuffles, is chosen with a probability distribution from the family.
-This probability distribution then induces a transition probability
-from state to state.  Going from card order\( \pi \) to \( \tau \) is
-the same as composing \( \pi \) with the permutation
-\( \pi^{-1} \circ \tau \).  Now identify shuffles as functions on
-\( 1 \) to \( n \) to \( 1 \) to \( n \), that is permutations.  Since
-a particular riffle shuffle is one of a whole family of riffle
-shuffles, chosen with a probability distribution \( Q \) from the
-family, the transition probabilities are
-\( p_{\pi \tau} = \Prob{X_t = \tau \given X_{t-1} = \pi} = Q(\pi^{-1}
-\circ \tau) \).
+initial deck order numbered \( 1 \) to \( n \), with probability \( 1 \).
+A particular riffle shuffle, one of a whole family of riffle shuffles,
+is chosen with a probability distribution from the family. This
+probability distribution then induces a transition probability from
+state to state.  Going from card order\( \pi \) to \( \tau \) is the
+same as composing \( \pi \) with the permutation \( \pi^{-1} \circ \tau \).
+Now identify shuffles as functions on \( \set{1, \dots n} \) to \( \set{1,
+\dots n} \), that is, permutations.  Since a particular riffle shuffle
+is one of a whole family of riffle shuffles, chosen with a probability
+distribution \( Q \) from the family, the transition probabilities are \(
+p_{\pi \tau} = \Prob{X_t = \tau \given X_{t-1} = \pi} = Q(\pi^{-1} \circ
+\tau) \).
 
-The rate of convergence of \( X_t \) to the stationary density,
-measured by the total variation distance of some other metric is
-determined by the eigenvalues of the transition matrix.  We know that
-the entries of \( P^k \) are the probabilities of certain permutations
-being acheived usder \( k \) riffle shuffles.  These probabilities are
-of the form
+The rate of convergence of \( X_t \) to the stationary density, measured
+by the total variation distance of some other metric, is determined by
+the eigenvalues of the transition matrix.  We know that the entries of \(
+P^k \) are the probabilities of certain permutations being achieved
+under \( k \) riffle shuffles.  These probabilities are of the form
 \[
-    \frac{1}{2^nk} \binom{2^k +n - r}{n},
+    \frac{1}{2^{nk}} \binom{2^k +n - r}{n},
 \] for the probability of a permutation with \( r \) rising sequences
 being achieved after \( k \) riffle shuffles.
 
-Expanding the binomial
-expression, explicitly write out
-\[
-    \binom{x + n - r}{n} = \sum\limits_{i=0}^n c_{n,r,i} x^i
-\] giving the binomial coefficient as an \( n \)th degree polynomial in \(
-x \) written in increasing powers with coefficients as a function of \( n \) and \( r \).
-\begin{example}
-  As a simple illustrative example, take $n = 5$ and $r = 2$ so the
-  point is to expand
-  \begin{multline*}
-    \binom{x+5 - 2}{5} = \binom{x+3}{5} =
-    \frac{(x+3)(x+2)(x+1)x(x-1)}{5!} \\
-    =  \frac{x^5 + 5 x^4 + 5 x^3 - 5 x^2 - 6 x}{5!} \\
-    = - \frac{1}{20} x - \frac{1}{24} x^2 - \frac{1}{24} x^2 +
-    \frac{1}{24} x^4   + \frac{1}{120} x^5  
-  \end{multline*}
-\end{example}
-It doesn't
-really matter what the coefficients are, only that we can write the
-binomial coefficient expansion as a polynomial in \( x \).  Substituting
-\( 2^k \) for \( x \), we see that the entries of \( P^k \) have the
-form
-\[
-  \sum\limits_{i=0}^n c_{n,r,n-i} \left( \frac{1}{2^i} \right)^k
-  = \frac{1}{2^{nk}} \sum\limits_{i=0}^n c_{n,r,i} \left( 2^k \right)^i
-\] This means that the entries of the \( k \)th power of \( P \) are
-given by fixed linear combinations of the \( k \)th powers of \( 1 \), \(
-\frac{1}{2} \), \( \frac{1}{4} \) and \( \frac{1}{2^n} \).  Then from
-standard facts of linear algebra the set of all eignevalues of \( P \)
-is exactly \( 1 \), \( \frac{1}{2} \), \( \frac{1}{4} \) and \( \frac{1}
-{2^n} \).  The second largest eigenvalue determines the rate of
-convergence to the stationary distribution. For riffle shuffling, this
-eigenvalue is \( \frac{1}{2} \).  Once the variation distance gets to
-the cutoff, it decreases by a facotr of approximately \( \frac{1}{2} \)
-with each shuffle.
+Mann
+\cite{mann94} asserts that the eigenvalues of the transition probability
+matrix for a single riffle shuffle are exactly \( 1, \frac{1}{2}, \frac{1}
+{4}, \dots \frac{1}{2^n} \), see the exercises.  The second largest
+eigenvalue determines the rate of convergence to the stationary
+distribution.  For riffle shuffling, this eigenvalue is \( \frac{1}{2} \).
+Once the variation distance gets to the cutoff, it decreases by a factor
+of approximately \( \frac{1}{2} \) with each shuffle.
 
 \begin{example}
     The riffle shuffle matrix for the deck of three cards is
-\[
-    \begin{pmatrix}
-        \frac{1}{2}     & \frac{1}{8}   & \frac{1}{8}   & \frac{1}{8}
-        & \frac{1}{8}   & 0 \\
-        \frac{1}{8}     & \frac{1}{2}   & \frac{1}{8}   & \frac{1}{8}
-        & 0     & \frac{1}{8} \\
-        \frac{1}{8}     & \frac{1}{8}   & \frac{1}{2}   & 0     & \frac{1}
-        {8}     & \frac{1}{8} \\
-        \frac{1}{8}     & \frac{1}{8}   & 0     & \frac{1}{2}   &
-        \frac{1}{8}   & \frac{1}{8} \\
-        \frac{1}{8}     & 0     & \frac{1}{8}   & \frac{1}{8}   & \frac{1}
-        {2}     & \frac{1}{8} \\
-        0       & \frac{1}{8}   & \frac{1}{8}   & \frac{1}{8}   & \frac{1}
-        {8}     & \frac{1}{2} \\
-    \end{pmatrix}
-\]
-    The eigenvalues of this matrix are \( 1, \frac{1}{2}, \frac{1}{2},
+    \[
+        \begin{pmatrix}
+            \frac{1}{2} & \frac{1}{8}   & \frac{1}{8}   & \frac{1}{8}
+            & \frac{1}{8}       & 0 \\
+            \frac{1}{8} & \frac{1}{2}   & \frac{1}{8}   & \frac{1}{8}
+            & 0 & \frac{1}{8} \\
+            \frac{1}{8} & \frac{1}{8}   & \frac{1}{2}   & 0     & \frac{1}
+            {8} & \frac{1}{8} \\
+            \frac{1}{8} & \frac{1}{8}   & 0     & \frac{1}{2}   & \frac{1}
+            {8} & \frac{1}{8} \\
+            \frac{1}{8} & 0     & \frac{1}{8}   & \frac{1}{8}   & \frac{1}
+            {2} & \frac{1}{8} \\
+            0   & \frac{1}{8}   & \frac{1}{8}   & \frac{1}{8}   & \frac{1}
+            {8} & \frac{1}{2} \\
+        \end{pmatrix}
+        .
+    \] The eigenvalues of this matrix are \( 1, \frac{1}{2}, \frac{1}{2},
     \frac{1}{2}, \frac{1}{4}, \frac{1}{4} \).
 \end{example}
-
 
 \visual{Section Starter Question}{../../../../CommonInformation/Lessons/question_mark.png}
 \section*{Section Ending Answer}
 
-For card players, shuffling the deck to remove this order
-is essential so that cards dealt from the deck come ``at random'',
-that is, in an order uniformly distributed over all possible deck
-orders.  For the Top-to-Random-Shuffle \( 7 \) shuffles of the 3-card deck gets close to the
-uniform density, which turns out to be the stationary density. With a
-riffle shuffle on a standard deck, \( 7 \) shuffles gets close to the
-uniform density
+For card players, shuffling the deck to remove any order is essential so
+that cards dealt from the deck come ``at random'', that is, in an order
+uniformly distributed over all possible deck orders.  For the
+Top-to-Random-Shuffle \( 7 \) shuffles of the 3-card deck gets close to
+the uniform density, which turns out to be the stationary density.  With
+a riffle shuffle on a standard deck, \( 7 \) shuffles gets close to the
+uniform density.
 
 \subsection*{Sources} This section is adapted from
-\cite{mann94}.  Parts are also adapted from
+\cite{mann94}. Parts are also adapted from
 \cite{aldous86}.
 
 \hr
@@ -1109,23 +1282,145 @@ uniform density
 
 \visual{Problems to Work}{../../../../CommonInformation/Lessons/solveproblems.png}
 \section*{Problems to Work for Understanding}
-% Reformat the Problem and Solutions to exsol format.
-\begin{exercise}
-  Show with a specific pair of permutations on 4 cards that the
-  transition probability matrix is not symmetric.
-\end{exercise}
-\begin{solution}
-  
-\end{solution}
-\begin{exercise}
-  Check  that the Markov chain modeling shuffling under the
-  Top-To-Random shuffle is irreducible and aperiodic.
-\end{exercise}
-\begin{solution}
-  
-\end{solution}
-% \link{_soln.xml}{Solutions to Problems}
 
+\renewcommand{\theexerciseseries}{}
+\renewcommand{\theexercise}{\arabic{exercise}}
+
+\begin{exercise}
+    Show that the Markov chain \( X_t \) on \( S_n \) induced by the
+    TTRS is irreducible.
+\end{exercise}
+\begin{solution}
+    The TTRS taking the top card to the bottom of the deck, moving all
+    other cards up one position is an \( n \)-cycle on \( S_n \). The
+    TTRS taking the top card to the second place in the deck, moving the
+    second card to the top is an \emph{adjacent transposition} of \( 1 \)
+    and \( 2 \) in that cycle.  These two elements are generators of \(
+    S_n \) (see Michael Artin \booktitle{Algebra}, 1991, Exercise 6.6.16)
+    meaning that any permutation can be achieved by a combination of
+    these actions.
+
+    More concretely, \( k \) applications of the TTRS taking the top
+    card to the bottom of the deck will move \( k \) to the top, \( k+1 \),
+    next and so on to n, then \( 1 \) to \( k-1 \) in the bottom portion
+    of the deck.  Then The TTRS taking the top card to the second place
+    in the deck, moving the second card to the top will exchange \( k+1 \)
+    and \( k \).  Then \( n-k \) more applications of the TTRS taking
+    the top card to the bottom of the deck will move the portion \( 1 \)
+    to \( k-1 \) back to the top, leaving \( k+1 \) and \( k \)
+    transposed and then \( k+2 \) to \( n \) on the bottom.  Thus any
+    adjacent transposition or \( 2 \)-cycle can be achieved.  It is a
+    well known fact that any permutation can be written as a product of \(
+    2 \)-cycles, these shuffles are enough to reach any permutation,
+    meaning that the Markov chain is irreducible.
+\end{solution}
+\begin{exercise}
+    Show that the Markov chain \( X_t \) on \( S_n \) induced by the
+    riffle shuffle is irreducible.
+\end{exercise}
+\begin{solution}
+    By splitting the deck into one card on the left, and \( n-1 \) cards
+    on the right, the specific shuffle taking the top card to the bottom
+    of the deck, moving all other cards up one position is possible.  By
+    splitting the deck into one card on the left, and \( n-1 \) cards on
+    the right, the specific shuffle taking the top card to the second
+    place in the deck, moving the second card to the top is also
+    possible. Then by the previous exercises all permutations are
+    possible and the Markov chain is irreducible.
+\end{solution}
+\begin{exercise}
+    Show with a specific pair of permutations on \( 4 \) cards that the
+    transition probability matrix is not symmetric.
+\end{exercise}
+\begin{solution}
+    Starting with the deck in the order \( [1234] \), a \emph{perfect
+    in-shuffle} results in the order \( [3142] \), and this is the only
+    riffle shuffle that results in this order, so \( P_{[1234],[3142]} =
+    \frac{1}{16} \).  On the other hand, no riffle shuffle takes \( [3142]
+    \) to \( [1234] \) because
+    \begin{itemize}
+        \item
+            splitting the deck into \( 1 \) card on the left and \( 3 \)
+            cards on the right all interleavings leave \( 4 \) above \(
+            2 \),
+        \item
+            splitting the deck into \( 2 \) cards on the left and \( 2 \)
+            cards on the right all interleavings leave \( 3 \) above \(
+            1 \), and
+        \item
+            splitting the deck into \( 3 \) cards on the left and \( 1 \)
+            card on the right, all interleavings leave \( 3 \) above \(
+            1 \).
+    \end{itemize}
+    Therefore, \( P_{[3142],[1234]} = 0 \) and the transition
+    probability matrix is not symmetric.
+\end{solution}
+\begin{exercise}
+    Using a specific example with \( n=5 \) and \( r = 2 \) explicitly
+    write out
+    \[
+        \binom{x + n - r}{n} = \sum\limits_{i=0}^n c_{n,r,i} x^i
+    \] giving the binomial coefficient as an \( n \)th degree polynomial
+    in \( x \) written in increasing powers with coefficients as a
+    function of \( n \) and \( r \).
+\end{exercise}
+\begin{solution}
+    The point is to expand
+    \begin{multline*}
+        \binom{x+5 - 2}{5} = \binom{x+3}{5} = \frac{(x+3)(x+2)(x+1)x(x-1)}
+        {5!} \\
+        = \frac{x^5 + 5 x^4 + 5 x^3 - 5 x^2 - 6 x}{5!} \\
+        = - \frac{1}{20} x - \frac{1}{24} x^2 - \frac{1}{24} x^2 + \frac
+        {1}{24} x^4 + \frac{1}{120} x^5
+    \end{multline*}
+\end{solution}
+\begin{exercise}
+    Show that the entries in the transition probability matrix for the
+    single riffle shuffle on a deck of \( n \) cards are either \( \frac
+    {n+1}{2^n} \), \( \frac{1}{2^n} \) or \( 0 \).
+\end{exercise}
+\begin{solution}
+    The transition probabilities are of the form
+    \[
+        \frac{1}{2^{n}} \binom{2 +n - r}{n},
+    \] for the probability of a permutation with \( r \) rising
+    sequences being achieved after a single riffle shuffles.  Recall
+    that a permutation \( \pi \) of \( n \) cards in original order made
+    by a riffle shuffle will have exactly \( 2 \) rising sequences
+    unless it is the identity which has exactly \( 1 \) rising sequence.
+    If \( r = 1 \), then the binomial coefficient will be \( n+1 \), if \(
+    r = 2 \) then the binomial coefficient is \( 1 \) and if \( r > 2 \)
+    the binomial coefficient is \( 0 \) by convention.
+\end{solution}
+\begin{exercise}
+    Show that the eigenvalues of the transition probability matrix for a
+    single riffle shuffle are exactly \( 1, \frac{1}{2}, \frac{1}{4},
+    \dots \frac{1} {2^n} \).
+\end{exercise}
+\begin{solution}
+    Not a complete solution.
+
+    It doesn't really matter what the coefficients are, only that we can
+    write the binomial coefficient expansion as a polynomial in \( x \).
+    Substituting \( 2^k \) for \( x \), the entries of \( P^k \) have
+    the form
+    \[
+        \frac{1}{2^{nk}} \sum\limits_{i=0}^n c_{n,r,i} \left( 2^k \right)^i
+        = \sum\limits_{i=0}^n c_{n,r,n-i} \left( \frac{1}{2^i} \right)^k.
+    \] This means that the entries of the \( k \)th power of \( P \) are
+    given by fixed linear combinations of the \( k \)th powers of \( 1 \),
+    \( \frac{1}{2} \), \( \frac{1}{4} \) and \( \frac{1}{2^n} \).  Then
+    from standard facts of linear algebra the set of all eigenvalues of \(
+    P \) (What are these standard facts?) is exactly \( 1, \frac{1}{2},
+    \frac{1}{4}, \dots \frac{1} {2^n} \).  Further, Mann
+    \cite[mann96] asserts that the multiplicities are the Stirling
+    numbers of the first kind, up to sign:
+    \[
+        \operatorname{multiplifcity}
+        \left( \frac{1}{2^n} \right) = (-1)^{n-i} c(n,k)
+    \] referencing Graham, Knuth, Patashnik, \booktitle{Concrete
+    Mathematics}, 1989, p.  243-253.
+\end{solution}
 \hr
 
 \visual{Books}{../../../../CommonInformation/Lessons/books.png}
@@ -1150,8 +1445,7 @@ uniform density
     \item
 \end{enumerate}
 
-\section*{\solutionsname}
-\loadSolutions
+\section*{\solutionsname} \loadSolutions
 
 \hr
 
@@ -1161,7 +1455,22 @@ Last modified:  \flastmod
 
 \end{document}
 
-%%% Local Variables:
-%%% mode: latex
-%%% TeX-master: t
-%%% End:
+File name                  : cardshuffling.tex
+Number of characters       : 60927
+Number of words            : 7466
+Percent of complex words   : 15.10
+Average syllables per word : 1.6484
+Number of sentences        : 350
+Average words per sentence : 21.3314
+Number of text lines       : 1247
+Number of blank lines      : 209
+Number of paragraphs       : 204
+
+
+READABILITY INDICES
+
+Fog                        : 14.5706
+Flesch                     : 45.7284
+Flesch-Kincaid             : 12.1804
+
+
