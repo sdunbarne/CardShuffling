@@ -230,7 +230,7 @@ takes an order to another order.  For example, the riffle shuffle, also
 called a dovetail shuffle or leafing the cards, is a common type of
 shuffle that interleaves packets of cards.  A perfect riffle shuffle,
 also called a faro shuffle, splits the deck exactly in half, then
-interleaves cards alternately from each half.  A perfect rifle shuffle
+interleaves cards alternately from each half.  A perfect rifle shuffle is
 difficult to perform, except for practiced magicians.  More commonly,
 packets of adjacent cards from unevenly split portions interleave,
 creating a new order for the deck that nevertheless preserves some of
@@ -246,15 +246,15 @@ re-orderings with probability distributions different from the riffle
 shuffle, leading to different transition probabilities, and thus
 different Markov processes.
 
-Going from card order \( \pi \) to \( \tau \) is the same as composing \(
-\pi \) with the permutation \( \pi^{-1} \circ \tau \).  Now identify
+Going from card order \( \pi \) to \( \sigma \) is the same as composing \(
+\pi \) with the permutation \( \pi^{-1} \circ \sigma \).  Now identify
 shuffles as functions on \( \set{1, \dots n} \) to \( \set{1, \dots n} \),
 that is, permutations.%
 \index{permutation}
 Since a particular riffle shuffle is one of a whole family of riffle
 shuffles, chosen with a probability distribution \( Q \) from the
-family, the transition probabilities are \( p_{\pi \tau} = \Prob{X_t =
-\tau \given X_{t-1} = \pi} = Q(\pi^{-1} \circ \tau) \).  So now the goal
+family, the transition probabilities are \( p_{\pi \sigma} = \Prob{X_t =
+\sigma \given X_{t-1} = \pi} = Q(\pi^{-1} \circ \sigma) \).  So now the goal
 is to describe the probability distribution \( Q \) and apply it to the
 Markov process.
 
@@ -274,8 +274,8 @@ Markov process.
 
     Recall also that sequential permutations are applied from right to
     left.  Composing \( \pi \) with the permutation \( \pi^{-1} \circ
-    \tau \) obviously \( \tau = \pi \circ (\pi^{-1} \circ \tau) \). If \(
-    \tau = [132] \), then \( \pi^{-1} \circ \tau = [321] \) and \( [132]
+    \sigma \) obviously \( \sigma = \pi \circ (\pi^{-1} \circ \sigma) \). If \(
+    \sigma = [132] \), then \( \pi^{-1} \circ \sigma = [321] \) and \( [132]
     = [231] \circ [321] \).
 
     This section does not use cycle notation for permutations.
@@ -303,15 +303,15 @@ permutation.  The transition probabilities are
         0 & \text{otherwise}
     \end{cases}
 \] defining the transition probability matrix \( P \). Then after \( t \)
-TTRS shuffles, the order of the deck has a probability distribution \( P^t_n
-X_0 = P^t X_0 \) on \( S_n \), where with an overload of notation \( X_0
-\) is the vector representing the initial state. Often the subscript \(
-n \) is omitted for brevity for a fixed or implicit number of cards.
+TTRS shuffles, the order of the deck has a probability distribution \( 
+P^t X_0 \) on \( S_n \), where with an overload of notation \( X_0
+\) is the vector with a \( 1 \) in the position for \( \sigma_0 \) and
+\( 0 \) elsewhere, representing the initial state.
 Then \( X_t \sim P^t X_0 \), the distribution on card decks. \( X_t \)
 is irreducible see the exercises.  It is also immediate that \( X_t \)
 is aperiodic since it is possible that the top card can recur back on
 top.  Therefore, this Markov chain must converge to a stationary
-distribution and by the previous Theorem, \( P^t X_0 \to
+distribution and this section will later prove that \( P^t X_0 \to
 \operatorname{unif}
 (S_n) \).
 
@@ -541,7 +541,7 @@ add(q.fit(),(0,0), (100,0) );
     distribution on a finite group \( G \).  Let \( \tau \) be a strong
     stationary time for \( Q \).  Then
     \[
-        d_P(n) = \| Q^{\tau} - \pi \|_{TV} \le \Prob{\tau > k}
+        \| Q^{\tau} - \pi \|_{TV} \le \Prob{\tau > k}
     \] for all \( k \ge 0 \)
 \end{lemma}
 
@@ -553,7 +553,7 @@ add(q.fit(),(0,0), (100,0) );
         \tau >k} \\
         &= \sum_{j \le k} U(A) \Prob{\tau = j} + \Prob{X_k \in A \given
         \tau >k} \Prob{\tau > k} \\
-        &= U(A) + \left[ \Prob{X_k \in A \given \tau >k} - U(A) \right]
+        &= U(A) + \left( \Prob{X_k \in A \given \tau >k} - U(A) \right)
         \Prob{\tau > k}
     \end{align*}
     and so
@@ -564,7 +564,7 @@ add(q.fit(),(0,0), (100,0) );
 
 \begin{lemma}
     \label{lem:cardshuffling:coupon} Sample uniformly with replacement
-    from an urn with \( n \) balls.  Let \( V \) be the number of draw
+    from an urn with \( n \) balls.  Let \( V \) be the number of draws
     required until each ball has been drawn at least once.  Then
     \[
         \Prob{V > n \log n + c n} \le \EulerE^{-c}
@@ -621,7 +621,7 @@ deck to being shuffled according to the uniform density.
     For the TTRS shuffle
     \begin{enumerate}
         \item
-            \( d_P(n \log n + n \log epsilon^{-1} )\le \epsilon \) for \(
+            \( d_P(n \log n + n \log \epsilon^{-1} )\le \epsilon \) for \(
             n \) sufficiently large.
         \item
             \( d_P(n \log n - n \log (C \epsilon^{-1})) \ge 1-\epsilon \)
@@ -741,8 +741,8 @@ and \( n \log n - n \log \epsilon^{-1} = n \log n (1 - o(1)) \). This
 gives the sense that \( n \log n \) shuffles is about the right number
 of shuffles needed to bring the deck close to being uniformly shuffled.
 This gives a cut-off phenomenon, that is \( n \log n \) is a critical
-number shuffles such that \( d_P(n \log n + o(n)) \approx 0 \) but \( d_P
-(n \log n - o(n)) \approx 1 \) the distance from the stationary density
+number of shuffles such that \( d_P(n \log n + o(n)) \approx 0 \) but \( d_P
+(n \log n - o(n)) \approx 1 \).  The distance from the stationary density
 changes abruptly at some value, see Figure~%
 \ref{fig:cardshuffling:cards3}.
 
@@ -779,15 +779,15 @@ yaxis("$\| P^t - U \|_{TV}$", Arrow);
     \label{fig:cardshuffling:cards3}
 \end{figure}
 
-Note that this is quite different from the asymptotics of \( d_P(n) = \|
-P^n - U \|_{TV} \).  Peron-Frobenius theory says \( d_P(n) \asympt a
-\lambda^n \) where \( \lambda \) is the second largest eigenvalue, but
-these asymptotics miss the cut-off.
-
-The justification is to find a ``bad event'' and use it to measure the
-total variation distance.  In fact, let \( A_j \) be the event that the
-bottom \( j \) cards of the deck appear in correct relative order.  Then
-\( U(A_j) = 1/j! \).  while \( P^t(A_j) = \). %% Need to fix this up.
+Note that this is quite different from the asymptotics of
+\( d_P(n) = \| P^n - U \|_{TV} \).  Perron-Frobenius theory says
+\( d_P(n) \asympt a \lambda^n \) where \( \lambda \) is the second
+largest eigenvalue, but these asymptotics miss the cut-off.  The
+justification is to find a ``bad event'' and use it to measure the
+total variation distance.  In fact, let \( A_j \) be the event that
+the bottom \( j \) cards of the deck appear in correct relative order.
+Then \( U(A_j) = 1/j! \).  while \( P^t(A_j) =
+\). %% Need to fix this up.
 
 \subsection*{The Riffle Shuffle}
 
@@ -797,7 +797,7 @@ One realistic model of shuffling a deck cards is the commonly used \defn
 The riffle shuffle is sometimes called the GSR shuffle since Gilbert and
 Shannon and independently Reeds first analyzed it.  First cut the deck
 randomly into two packets, one containing \( k \) cards and the other
-containing \( n-k \) cards.  Choose \( k \), the number of cards cut
+containing \( n-k \) cards.  Choose the number of cards cut, \( k \),
 according to the binomial density, meaning that the probability of the
 cut occurring after \( k \) cards is exactly \( \frac{1}{2^n}\binom{n}{k}
 \).
@@ -901,8 +901,8 @@ the proportion of cuts and interleavings that give that arrangement.
 \begin{example}
     Consider the riffle shuffle on a \( 3 \)-card deck as a Markov
     chain.  The probability distribution for \( R \) is in Table~%
-    \ref{tab:cardshuffling:riffle3}.  To obtain the entries in Table~%
-    \ref{tab:cardshuffling:riffle3}, systematically go through the
+    \ref{tab:cardshuffling:riffle3}.  To obtain the entries in the
+    transition probability matrix, systematically go through the
     possible cuts and interleavings. Cutting three cards into the left
     packet, and none in the right packet, the only possible interleaving
     trivially leaves the deck unchanged.  With a cut into \( 2 \) cards
@@ -930,9 +930,9 @@ the proportion of cuts and interleavings that give that arrangement.
 
     To obtain the entries in Table~%
     \ref{tab:cardshuffling:riffle3} do the computation for a typical
-    element of the transition probability matrix, say \( p_{\pi,\tau} \)
-    with \( \pi = [213] \) and \( \tau = [132] \).  Then \( \pi^{-1} = [213]
-    \) and \( \pi^{-1} \circ \tau = [231] \).  Now \( R([231]) = \frac{1}
+    element of the transition probability matrix, say \( p_{\pi,\sigma} \)
+    with \( \pi = [213] \) and \( \sigma = [132] \).  Then \( \pi^{-1} = [213]
+    \) and \( \pi^{-1} \circ \sigma = [231] \).  Now \( R([231]) = \frac{1}
     {8} \), giving \( p_{[213] [132]} = \frac{1}{8} \) in the
     probability transition matrix.
 
@@ -1202,14 +1202,14 @@ initial deck order numbered \( 1 \) to \( n \), with probability \( 1 \).
 A particular riffle shuffle, one of a whole family of riffle shuffles,
 is chosen with a probability distribution from the family. This
 probability distribution then induces a transition probability from
-state to state.  Going from card order\( \pi \) to \( \tau \) is the
-same as composing \( \pi \) with the permutation \( \pi^{-1} \circ \tau \).
+state to state.  Going from card order\( \pi \) to \( \sigma \) is the
+same as composing \( \pi \) with the permutation \( \pi^{-1} \circ \sigma \).
 Now identify shuffles as functions on \( \set{1, \dots n} \) to \( \set{1,
 \dots n} \), that is, permutations.  Since a particular riffle shuffle
 is one of a whole family of riffle shuffles, chosen with a probability
 distribution \( Q \) from the family, the transition probabilities are \(
-p_{\pi \tau} = \Prob{X_t = \tau \given X_{t-1} = \pi} = Q(\pi^{-1} \circ
-\tau) \).
+p_{\pi \sigma} = \Prob{X_t = \sigma \given X_{t-1} = \pi} = Q(\pi^{-1} \circ
+\sigma) \).
 
 The rate of convergence of \( X_t \) to the stationary density, measured
 by the total variation distance of some other metric, is determined by
