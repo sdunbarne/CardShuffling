@@ -274,7 +274,7 @@ Markov process.
 
     Recall also that sequential permutations are applied from right to
     left.  Composing \( \pi \) with the permutation \( \pi^{-1} \circ
-    \sigma \) obviously \( \sigma = \pi \circ (\pi^{-1} \circ \sigma) \). If \(
+    \sigma \) gives \( \pi \circ (\pi^{-1} \circ \sigma) = \sigma \). If \(
     \sigma = [132] \), then \( \pi^{-1} \circ \sigma = [321] \) and \( [132]
     = [231] \circ [321] \).
 
@@ -307,8 +307,8 @@ TTRS shuffles, the order of the deck has a probability distribution \(
 P^t X_0 \) on \( S_n \), where with an overload of notation \( X_0
 \) is the vector with a \( 1 \) in the position for \( \sigma_0 \) and
 \( 0 \) elsewhere, representing the initial state.
-Then \( X_t \sim P^t X_0 \), the distribution on card decks. \( X_t \)
-is irreducible see the exercises.  It is also immediate that \( X_t \)
+The Markov chain \( X_t \) induced by the TTRS
+is irreducible, see the exercises.  It is also immediate that \( X_t \)
 is aperiodic since it is possible that the top card can recur back on
 top.  Therefore, this Markov chain must converge to a stationary
 distribution and this section will later prove that \( P^t X_0 \to
@@ -496,7 +496,7 @@ add(q.fit(),(0,0), (100,0) );
     precisely, collecting a coupon here is putting the top card below
     the card labeled \( n \).  The first card is hard to put under \( n \),
     in fact it happens with probability \( \frac{1}{n+1} \) but it gets
-    easier as time goes on.  This motivates the assertion that \( \E{\tau_
+    easier as time goes on.  This motivates the later assertions that \( \E{\tau_
     {\text{top}} + 1} = \Theta(n \log n) \) and that \( \Prob{\tau_{\text
     {top}}+1 \ge n \log n + c n} \le \EulerE^{-c} \) for all \( c \ge 0 \).
     See below for more details.
@@ -508,7 +508,7 @@ add(q.fit(),(0,0), (100,0) );
     \nu \) is%
     \index{total variation distance}
     \[
-        \| \mu - \nu \|_{TV} = \max_{A \subset \Omega} \abs{ \mu(A) -
+        \| \mu - \nu \|_{TV} = \sup_{A \subset \Omega} \abs{ \mu(A) -
         \nu(A)} = \frac{1}{2} \sum\limits_{x \in \Omega} \abs{ \mu(x) -
         \nu(x)}.
     \]
@@ -532,18 +532,27 @@ add(q.fit(),(0,0), (100,0) );
 \begin{remark}
     A \emph{stopping time} is a rule which tells the process to ``stop''
     depending on the current value of the process.  The stopping time is
-    strong stationary if conditional on stopping after \( t \) steps the
+    strong stationary if conditional on stopping after \( t+1 \) steps the
     value of the process is uniform on the state space.
 \end{remark}
 
 \begin{lemma}
     \label{lem:cardshuffling:stoptime} Let \( Q \) be a probability
-    distribution on a finite group \( G \).  Let \( \tau \) be a strong
-    stationary time for \( Q \).  Then
+    distribution on a finite group \( G \) inducing an irreducible and
+    aperiodic Markov chain
+    with transition probabilities \( Q(\pi^{-1} \circ \sigma) \)
+    from \( \pi \) to \( \sigma \).   Let \( \tau \) be a strong
+    stationary time for \( Q \) and \( U \) the uniform distribution.  Then
     \[
-        \| Q^{\tau} - \pi \|_{TV} \le \Prob{\tau > k}
+        \| Q^{\tau} - U \|_{TV} \le \Prob{\tau > k}
     \] for all \( k \ge 0 \)
 \end{lemma}
+
+\begin{remark}
+    The hypotheses irreducible and aperiodic may not be strictly
+    necessary, but occur here because both are common in theorems about
+    Markov chains.
+\end{remark}
 
 \begin{proof}
     For any \( A \subset G \)
@@ -556,9 +565,9 @@ add(q.fit(),(0,0), (100,0) );
         &= U(A) + \left( \Prob{X_k \in A \given \tau >k} - U(A) \right)
         \Prob{\tau > k}
     \end{align*}
-    and so
+    and because \( \abs{\Prob{X_k \in A \given \tau >k} - U(A)} \le 1 \)
     \[
-        d_P(n) = \| Q^{\tau} - \pi \|_{TV} \le \Prob{\tau > k}.
+        \| Q^{\tau} - U \|_{TV} \le \Prob{\tau > k}.
     \]
 \end{proof}
 
@@ -587,31 +596,27 @@ add(q.fit(),(0,0), (100,0) );
     be the event ``ball \( b \) not drawn in the first \( m \) draws.
     Then
     \[
-        \Prob{ V > m} = \Prob{ \bigcup_b A_b } \le \sum_{b} \Prob{A_b} =
-        n \left( 1 - \frac{1}{n} \right)^m \le \EulerE^{-m/n} = \EulerE^
+        \Prob{ V > m} = \Prob{ \bigcup_{b=1}^n A_b } \le \sum_{b=1}^n \Prob{A_b} =
+        n \left( 1 - \frac{1}{n} \right)^m \le n \EulerE^{-m/n} = \EulerE^
         {-c}.
-    \]
+      \]
+      See the exercises for a proof of the second inequality.
 \end{proof}
 
-\begin{theorem}[Aldous, Diaconis]
-    For a finite, irreducible, aperiodic Markov chain \( Y_t \)
-    distributed as \( Q^t \) at time \( t \) and with stationary
-    distribution \( \pi \), and \( \tau \) is a strong stationary time,
-    then
-    \[
-        \| Q^{\tau} - \pi \|_{TV} \le \Prob{\tau \ge t}.
-    \]
-\end{theorem}
+% \begin{theorem}[Aldous, Diaconis]
+%     For a finite, irreducible, aperiodic Markov chain \( Y_t \)
+%     distributed as \( Q^t \) at time \( t \) and with stationary
+%     distribution \( \pi \), and \( \tau \) is a strong stationary time,
+%     then
+%     \[
+%         \| Q^{\tau} - \pi \|_{TV} \le \Prob{\tau \ge t}.
+%     \]
+% \end{theorem}
 
-\begin{remark}
-    The hypotheses irreducible and aperiodic may not be strictly
-    necessary, but occur here because both are common in theorems about
-    Markov chains.
-\end{remark}
 
-Then immediately, \( \| P^{\tau_{\text{top}}+1} - U \|_{TV} \le \Prob{\tau_
-{\text{top}+1} \le \EulerE^{-c}} \).  This is like the coupon collector
-having \( n \) coupons.
+% Then immediately, \( \| P^{\tau_{\text{top}}+1} - U \|_{TV} \le \Prob{\tau_
+% {\text{top}+1} \le \EulerE^{-c}} \).  This is like the coupon collector
+% having \( n \) coupons.
 
 For simplicity in what follows, set \( d_P(n) = \| P^n - U \|_{TV} \).
 Then \( d_P(n) \) measures how close \( n \) repeated shuffles get the
@@ -671,8 +676,8 @@ deck to being shuffled according to the uniform density.
             \] where \( V_i \) is the number of draws required until \(
             i \) distinct balls have been drawn at least once.
         \item
-            After \( i \) distinct ball have been drawn, the chance that
-            a draw produces a not previously drawn ball is \( \frac{n-i}
+            After \( i \) distinct balls have been drawn, the chance that
+            a draw produces a not-previously-drawn ball is \( \frac{n-i}
             {n} \).  So \( V_i - V_{i-1} \) has distribution
             \[
                 \Prob{V_i - V_{i-1} = j} = \frac{n-i}{n} \left( 1 -
@@ -680,8 +685,8 @@ deck to being shuffled according to the uniform density.
             \] for \( j \ge 1 \).
         \item
             Comparing, the corresponding terms \( (\tau_{i+1} - \tau_i) \)
-            and \( V_i - V_{i-1} \) have the same distribution, since
-            the summands in each term are independent, it follows that
+            and \( V_{n-i} - V_{(n-i)-1} \) have the same distribution, since
+            the summands in each sum are independent, it follows that
             the sums \( \tau \) and \( V \) have the same distribution,
             as required.
         \item
@@ -691,16 +696,16 @@ deck to being shuffled according to the uniform density.
             Plainly \( U(A_j) = \frac{1}{j!} \).
         \item
             Let \( k = k(n) = n \log n - c_n n \) where \( c_n \to
-            \infty \). The goal is to show \( P^k(A_j) \to 1 \) as \( n
-            \to \infty \) for fixed \( j \).  Then \( d(k) \max\{P^k(A_j)
+            \infty \). The goal is to show \( P^{k(n)}(A_j) \to 1 \) as \( n
+            \to \infty \) for fixed \( j \).  Then \( d(k(n)) = \sup\{P^k(A_j)
             - U(A_j)\} \to 1 \) as \( n \to \infty \) for fixed \( j \),
             establishing the lower bound.
         \item
-            To prove \( P^k(A_j) \to 1 \) as \( n \to \infty \), note \(
-            P^k(A_j) \ge \Prob{\tau- \tau_{j-1} > k} \) because \( \tau
+            To prove \( P^{k(n)}(A_j) \to 1 \) as \( n \to \infty \), note \(
+            P^{k(n)}(A_j) \ge \Prob{\tau- \tau_{j-1} > k} \) because \( \tau
             - \tau_{j-1} \) is distributed as the time for the card
             initially \( j \)th from the bottom to come to the top and
-            be inserted.  If this has not happened by time \( k \), then
+            be inserted.  If this has not happened by time \( k(n) \), then
             the original bottom \( j \) cards must still be in their
             relative order at time \( k \).
         \item
@@ -728,7 +733,7 @@ deck to being shuffled according to the uniform density.
 \end{proof}
 
 \begin{remark}
-    The strong uniform time property of \( \tau \) played no role in
+    The strong stationary time property of \( \tau \) played no role in
     establishing the lower bound.  The proof gets lower bounds by
     guessing some set \( A \) for which \( P^k(A) - U(A) \) should be
     large and then using
@@ -782,16 +787,16 @@ yaxis("$\| P^t - U \|_{TV}$", Arrow);
 Note that this is quite different from the asymptotics of
 \( d_P(n) = \| P^n - U \|_{TV} \).  Perron-Frobenius theory says
 \( d_P(n) \asympt a \lambda^n \) where \( \lambda \) is the second
-largest eigenvalue, but these asymptotics miss the cut-off.  The
-justification is to find a ``bad event'' and use it to measure the
-total variation distance.  In fact, let \( A_j \) be the event that
-the bottom \( j \) cards of the deck appear in correct relative order.
-Then \( U(A_j) = 1/j! \).  while \( P^t(A_j) =
-\). %% Need to fix this up.
+largest eigenvalue, but the long-time asymptotics miss the cut-off.
+% The
+% justification is to find a ``bad event'' and use it to measure the
+% total variation distance.  In fact, let \( A_j \) be the event that
+% the bottom \( j \) cards of the deck appear in correct relative order.
+% Then \( U(A_j) = 1/j! \).  while \( P^t(A_j) \to 1\). 
 
 \subsection*{The Riffle Shuffle}
 
-One realistic model of shuffling a deck cards is the commonly used \defn
+A more realistic model of shuffling a deck cards is the commonly used \defn
 {riffle shuffle}.%
 \index{riffle shuffle}
 The riffle shuffle is sometimes called the GSR shuffle since Gilbert and
@@ -811,7 +816,7 @@ originally in positions \( k+1, k+2, \dots, n \).  This requirement is
 quite natural, considering how a person shuffles two packets of cards,
 one in each hand.  The cards in the left hand must still be in the same
 relative order in the shuffled deck, no matter how they interleave with
-the cards in the other packet, because the cards drop in order when
+the cards in the other packet, because the cards drop in order while
 shuffling.  The same goes for the cards in the right hand. See Figure~%
 \ref{fig:cardshuffling:riffle} for an illustration of a riffle shuffle
 on a \( 10 \)-card deck.
@@ -961,7 +966,7 @@ the proportion of cuts and interleavings that give that arrangement.
 
 First note that the Markov chain for riffle shuffling is regular, that
 is, any permutation has a positive probability of appearing after
-sufficiently many shuffles.  In fact, any number of shuffles greater
+sufficiently many shuffles, see the exercises.  In fact, any number of shuffles greater
 than \( \log_2 n \) will do. Since the riffle shuffle Markov chain is
 regular, there is a unique stationary density, which is the uniform
 density on \( S_n \).
@@ -1016,7 +1021,7 @@ increasing subsequences with that element is a rising subsequence.
     and then \( 4 \).  So another rising sequence is \( 45678 \).  This
     accounts for all cards and the deck has only two rising sequences.
     Writing the sequence as \( 45_{1}6_{23}78 \), offsetting the two
-    subsequences makes this clear.
+    subsequences, makes this clear.
 \end{example}
 
 \begin{example}
@@ -1099,7 +1104,7 @@ case.
 
 A third equivalent description is cutting the deck multinomially into
 packets of size \( m_1, m_2, \dots m_n \) and riffling \( m_1 \) and \(
-m_2 \) together, meaning choose uniformly among all interleaving that
+m_2 \) together, meaning choose uniformly among all interleavings that
 the keep the relative order of each packet, then riffling the resulting
 pile with \( m_3 \), then riffling that resulting pile with \( m_4 \)
 and so on.
@@ -1129,9 +1134,9 @@ and the interleaving corresponding to \( A \).  Note that the number of
 such encodings is \( a^n \).
 
 \begin{example}
-    Let the deck start in natural order.  Let \( A = 23004103 \) be the
+    Let an 8-card deck start in natural order.  Let \( A = 23004103 \) be the
     code for a particular \( 5 \)-shuffle of the \( 8 \)-card deck.  The
-    are three \( 0 \)s, one \( 1 \), one \( 2 \), two \( 3 \)s and one \(
+    code has three \( 0 \)s, one \( 1 \), one \( 2 \), two \( 3 \)s and one \(
     4 \).  Thus \( m_1 = 3 \), \( m_2 = 1 \), \( m_3 =1 \), \( m_4 = 2 \)
     and \( m_5 = 1 \).  So cut the deck into \( 123|4|5|67|8 \).  We put
     \( 123 \) where the \( 0 \)s are in \( A \), \( 4 \) where the \( 1 \)
@@ -1150,7 +1155,7 @@ induced on \( S_n \).
 
 \begin{theorem}
     The probability of achieving a permutation \( \pi \) when doing an \(
-    a \)-shuffle is
+    a \)-shuffle on an \( n \)-card deck is
     \[
         \frac{1}{a^n} \binom{n + a - r}{n},
     \] where \( r \) is the number of rising sequences in \( \pi \).
@@ -1192,7 +1197,30 @@ induced on \( S_n \).
             shuffles as the number of \( n \)-digit base \( a \) numbers
             gives \( a^n \) ways to do this.
     \end{enumerate}
-\end{proof}
+  \end{proof}
+
+  \begin{remark}
+    Compare the results of this theorem with the entries of the matrix
+        \[
+        \bordermatrix{  & [123] & [213] & [231] & [132] & [312] & [321]
+        \cr
+        [123]   & \frac{1}{2}   & \frac{1}{8}   & \frac{1}{8}   & \frac{1}
+        {8}     & \frac{1}{8}   & 0 \cr
+        [213]   & \frac{1}{8}   & \frac{1}{2}   & \frac{1}{8}   & \frac{1}
+        {8}     & 0     & \frac{1}{8} \cr
+        [231]   & \frac{1}{8}   & \frac{1}{8}   & \frac{1}{2}   & 0
+        & \frac{1}{8}   & \frac{1}{8} \cr
+        [132]   & \frac{1}{8}   & \frac{1}{8}   & 0     & \frac{1}{2}
+        & \frac{1}{8}   & \frac{1}{8} \cr
+        [312]   & \frac{1}{8}   & 0     & \frac{1}{8}   & \frac{1}{8}
+        & \frac{1}{2}   & \frac{1}{8} \cr
+        [321]   & 0     & \frac{1}{8}   & \frac{1}{8}   & \frac{1}{8}
+        & \frac{1}{8}   & \frac{1}{2} \cr
+        }.
+      \]
+     Application of the theorem is easier than counting the
+     shuffles carrying one permutation to another. 
+  \end{remark}
 
 \subsection*{Rate of convergence to the stationary distribution}
 
@@ -1313,11 +1341,13 @@ uniform density.
     well known fact that any permutation can be written as a product of \(
     2 \)-cycles, these shuffles are enough to reach any permutation,
     meaning that the Markov chain is irreducible.
-\end{solution}
+  \end{solution}
+
+  
 \begin{exercise}
     Show that the Markov chain \( X_t \) on \( S_n \) induced by the
     riffle shuffle is irreducible.
-\end{exercise}
+  \end{exercise}
 \begin{solution}
     By splitting the deck into one card on the left, and \( n-1 \) cards
     on the right, the specific shuffle taking the top card to the bottom
@@ -1327,7 +1357,24 @@ uniform density.
     place in the deck, moving the second card to the top is also
     possible. Then by the previous exercises all permutations are
     possible and the Markov chain is irreducible.
-\end{solution}
+  \end{solution}
+  
+  \begin{exercise}
+    Show that for all \(m,n\)
+    \[
+      \left( 1 - \frac{1}{n} \right)^m \le n \EulerE^{-m/n}.
+    \]
+    \end{exercise}
+    \begin{solution}
+      The inequality is equivalent to showing
+      \[
+        m \log(1-\frac{1}{n}) \le \frac{-m}{n}.
+      \]
+      Since the logarithm function is concave down at \(x=1\), then
+      \( \log(1- \frac{1}{n}) \ge \frac{-1}{n} \). 
+      and the desired inequality follows immediately.
+    \end{solution}
+
 \begin{exercise}
     Show with a specific pair of permutations on \( 4 \) cards that the
     transition probability matrix is not symmetric.
@@ -1354,7 +1401,20 @@ uniform density.
     \end{itemize}
     Therefore, \( P_{[3142],[1234]} = 0 \) and the transition
     probability matrix is not symmetric.
+
+    Alternatively, setting \( \pi = [3142]] \) and \( \sigma = [1234]
+    \), then \( P_{[3142],[1234]} = R( \pi^{-1} \circ \sigma ) \)
+    where \( R \) is the probability distribution on riffle shuffles.
+    Note that \( \pi^{-1} = [2413] \) and \( \sigma = [1234] =
+    \text{id} \) so \( \pi \circ \sigma = \pi^{-1} = [2413] \).  Note
+    that \( [2413] \) has \( n=4 \) rising sequences.  Then by the
+    probability of achieving a permutation \( \pi^{-1} \) when doing an \(
+    2 \)-shuffle on an \( 4 \)-card deck is
+    \[
+      \frac{1}{2^4} \binom{4 + 2 - 4}{4} = 0.
+    \]
 \end{solution}
+
 \begin{exercise}
     Using a specific example with \( n=5 \) and \( r = 2 \) explicitly
     write out
@@ -1374,6 +1434,7 @@ uniform density.
         {1}{24} x^4 + \frac{1}{120} x^5
     \end{multline*}
 \end{solution}
+
 \begin{exercise}
     Show that the entries in the transition probability matrix for the
     single riffle shuffle on a deck of \( n \) cards are either \( \frac
@@ -1392,6 +1453,7 @@ uniform density.
     r = 2 \) then the binomial coefficient is \( 1 \) and if \( r > 2 \)
     the binomial coefficient is \( 0 \) by convention.
 \end{solution}
+
 \begin{exercise}
     Show that the eigenvalues of the transition probability matrix for a
     single riffle shuffle are exactly \( 1, \frac{1}{2}, \frac{1}{4},
@@ -1474,3 +1536,8 @@ Flesch                     : 45.7284
 Flesch-Kincaid             : 12.1804
 
 
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
